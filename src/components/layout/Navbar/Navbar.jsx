@@ -288,8 +288,33 @@ const QuikNavbar = () => {
           box-shadow: -10px 0 60px rgba(0, 0, 0, 0.5);
           transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           z-index: 9998;
+          padding-top: 100px;
           overflow-y: auto;
           border-left: 1px solid var(--border-color, rgba(255, 152, 0, 0.2));
+        }
+        .quik-mobile-close {
+          position: absolute;
+          top: 25px;
+          inset-inline-end: 25px;
+          width: 45px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(255, 152, 0, 0.1);
+          border: 1px solid rgba(255, 152, 0, 0.3);
+          border-radius: 50%;
+          color: var(--text-primary, #fff);
+          cursor: pointer;
+          font-size: 20px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: 10;
+        }
+        .quik-mobile-close:hover {
+          background: rgba(255, 152, 0, 0.2);
+          border-color: #ff9800;
+          color: #ff9800;
+          transform: rotate(90deg);
         }
         .quik-mobile-menu.open {
           display: flex;
@@ -546,32 +571,32 @@ const QuikNavbar = () => {
 
         {/* Mobile Menu */}
         <div className={`quik-mobile-menu ${menuOpen ? "open" : ""}`}>
+          <button 
+            className="quik-mobile-close" 
+            onClick={() => setMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <FaTimes />
+          </button>
           <a href="/" className={`quik-mobile-link ${pathname === '/' ? 'active' : ''}`}>
-            <span className="badge">01</span>
             {t('nav.home')}
           </a>
           <a href="/about" className={`quik-mobile-link ${pathname === '/about' ? 'active' : ''}`}>
-            <span className="badge">02</span>
             {t('nav.about')}
           </a>
           <a href="/services" className={`quik-mobile-link ${pathname === '/services' ? 'active' : ''}`}>
-            <span className="badge">03</span>
             {t('nav.services')}
           </a>
           <a href="/partners" className={`quik-mobile-link ${pathname === '/partners' ? 'active' : ''}`}>
-            <span className="badge">04</span>
             {t('nav.partners')}
           </a>
           <a href="/franchise" className={`quik-mobile-link ${pathname === '/franchise' ? 'active' : ''}`}>
-            <span className="badge">05</span>
             {t('nav.franchise')}
           </a>
           <a href="/blog" className={`quik-mobile-link ${pathname === '/blog' ? 'active' : ''}`}>
-            <span className="badge">06</span>
             {t('nav.blog')}
           </a>
           <a href="/branches" className={`quik-mobile-link ${pathname === '/branches' ? 'active' : ''}`}>
-            <span className="badge">07</span>
             {t('nav.branches')}
           </a>
           <div className="quik-mobile-divider" />
