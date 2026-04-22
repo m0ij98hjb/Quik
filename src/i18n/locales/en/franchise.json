@@ -1,0 +1,84 @@
+{
+  "title": "Franchise",
+  "subtitle": "Join Our Family",
+  "hero": {
+    "title": "Franchise",
+    "typed": ["Franchise", "Be a Success Partner"]
+  },
+  "services": {
+    "badge": "01 / Services",
+    "title": "What We Offer Franchisees",
+    "subtitle": "We provide a comprehensive package of services and support to ensure our partners' success",
+    "construction": {
+      "title": "Construction & Design",
+      "desc": "Building and designing stations according to the geographical area and restructuring stations to meet future market requirements"
+    },
+    "supply": {
+      "title": "Supply of Essential Materials",
+      "desc": "Quik Fuel Stations Company provides its partners with essential materials to enable them to provide high-quality services"
+    },
+    "training": {
+      "title": "Training & Qualification",
+      "desc": "To ensure quality and safety, we provide training and qualification for human resources to preserve the safety of workers and the community"
+    },
+    "systems": {
+      "title": "Integrated Systems",
+      "desc": "We provide integrated systems for operating stations and projects with high efficiency and modern technologies"
+    },
+    "analysis": {
+      "title": "Analysis & Studies",
+      "desc": "Providing all data for the geographical area and partners with accurate market analysis"
+    },
+    "support": {
+      "title": "Continuous Support",
+      "desc": "Continuous technical and administrative support around the clock to ensure smooth workflow"
+    }
+  },
+  "benefits": {
+    "badge": "02 / Benefits",
+    "title": "Benefits of Joining Quik Family",
+    "subtitle": "Invest with a leading brand and benefit from our extensive experience",
+    "brand": {
+      "title": "Well-Known Brand",
+      "desc": "Join a leading brand in the fuel stations sector with an excellent reputation"
+    },
+    "partnership": {
+      "title": "Strategic Partnership",
+      "desc": "We work with you as a strategic partner to ensure your success and continuous growth"
+    },
+    "growth": {
+      "title": "Fast & Sustainable Growth",
+      "desc": "Proven strategies to achieve rapid growth and excellent investment returns"
+    },
+    "protection": {
+      "title": "Investment Protection",
+      "desc": "Clear and transparent contracts that protect your investment and ensure your rights"
+    }
+  },
+  "steps": {
+    "badge": "03 / Steps",
+    "title": "Steps to Obtain Franchise",
+    "subtitle": "A simple and clear process to join us",
+    "apply": {
+      "title": "Submit Application",
+      "desc": "Fill out the online application form with basic information"
+    },
+    "review": {
+      "title": "Review & Evaluation",
+      "desc": "Study the application and evaluate the site and feasibility"
+    },
+    "agreement": {
+      "title": "Signing & Agreement",
+      "desc": "Sign the contract and begin legal procedures"
+    },
+    "launch": {
+      "title": "Launch & Operation",
+      "desc": "Prepare the station and start operations with full support"
+    }
+  },
+  "cta": {
+    "title": "Ready to Join Us?",
+    "subtitle": "Start your successful investment journey with Quik today",
+    "button": "Contact Us Now"
+  }
+}

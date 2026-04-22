@@ -1,0 +1,20 @@
+{
+  "title": "فروعنا",
+  "subtitle": "Encuentra tu sucursal más cercana",
+  "badge": "فروعنا",
+  "heading": "محطاتنا على الخريطة",
+  "map": "فروعنا على الخريطة",
+  "description": "اضغط على أي فرع للانتقال إليه",
+  "list": "قائمة الفروع",
+  "click": "اضغط على فرع لعرضه على الخريطة",
+  "listTitle": "قائمة المحطات",
+  "chooseBranch": "اختر فرعاً",
+  "status": {
+    "active": "مشغلة",
+    "development": "تحت التطوير",
+    "contracted": "تم التعاقد"
+  },
+  "address": "العنوان",
+  "region": "المنطقة",
+  "directions": "احصل على الاتجاهات"
+}

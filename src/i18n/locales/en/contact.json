@@ -1,0 +1,24 @@
+{
+  "title": "Contact Us",
+  "subtitle": "We are here to help",
+  "badge": "Contact Us",
+  "heading": "We Are Here to Help",
+  "description": "Contact us for any inquiry or suggestion",
+  "form": {
+    "title": "Contact Form",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "subject": "Subject",
+    "message": "Your Message",
+    "send": "Send Message",
+    "submit": "Submit"
+  },
+  "info": {
+    "title": "Contact Info",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "Working Hours"
+  }
+}

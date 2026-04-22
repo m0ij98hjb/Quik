@@ -1,0 +1,82 @@
+{
+  "title": "About Us",
+  "subtitle": "Learn about Quik Company",
+  "hero": {
+    "typed1": "About Quik",
+    "typed2": "Our Vision & Mission",
+    "tagline": "We Present To You",
+    "description": "Quik Fuel Stations - A leader in fuel services in the Kingdom of Saudi Arabia",
+    "typed": ["About Quik", "Our Vision & Mission", "Our Values & Goals"]
+  },
+  "stats": {
+    "cars": "Cars Daily",
+    "stations": "Active Stations",
+    "experience": "Years Experience"
+  },
+  "history": {
+    "title": "Establishment of Quik Company",
+    "subtitle": "The journey of excellence and success began more than thirty years ago"
+  },
+  "vision": {
+    "title": "Vision",
+    "desc": "To be the first choice in fuel and service services in the Kingdom of Saudi Arabia, providing an exceptional experience for our customers."
+  },
+  "mission": {
+    "title": "Mission",
+    "desc": "To provide high-quality fuel services with outstanding customer experience, provide a motivating work environment for our employees, and a rewarding investment position for our partners."
+  },
+  "values": {
+    "title": "Values",
+    "excellence": {
+      "title": "Excellence",
+      "desc": "We always strive for excellence in all services and products we provide"
+    },
+    "integrity": {
+      "title": "Integrity",
+      "desc": "We work with transparency and credibility with our customers and partners"
+    },
+    "innovation": {
+      "title": "Innovation",
+      "desc": "We adopt the latest technologies and innovations in the fuel field"
+    },
+    "sustainability": {
+      "title": "Sustainability",
+      "desc": "We are committed to preserving the environment and providing sustainable solutions"
+    },
+    "partnership": {
+      "title": "Partnership",
+      "desc": "We believe in the importance of successful partnerships with our customers"
+    },
+    "customers": {
+      "title": "Customers",
+      "desc": "Customer satisfaction is our top priority at all times"
+    }
+  },
+  "goals": {
+    "title": "Our Strategic Goals",
+    "leadership": {
+      "title": "Leadership",
+      "desc": "Striving for leadership in fuel station management"
+    },
+    "safety": {
+      "title": "Safety",
+      "desc": "Commitment to the highest safety and quality standards"
+    },
+    "efficiency": {
+      "title": "Efficiency",
+      "desc": "Achieving operational efficiency in all our stations"
+    },
+    "growth": {
+      "title": "Growth",
+      "desc": "Sustainable growth and expansion in new areas"
+    },
+    "partnership": {
+      "title": "Partnership",
+      "desc": "Building strategic partnerships with partners"
+    },
+    "expansion": {
+      "title": "Expansion",
+      "desc": "Geographic expansion throughout the Kingdom"
+    }
+  }
+}

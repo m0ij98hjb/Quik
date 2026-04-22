@@ -1,0 +1,15 @@
+{
+  "title": "News",
+  "subtitle": "Latest News & Updates",
+  "hero": {
+    "typed": "News Center",
+    "heading": "Follow Our Latest News",
+    "description": "Stay up to date with the latest updates and announcements from Quik"
+  },
+  "badge": "News Center",
+  "heading": "Latest News & Updates",
+  "readMore": "Read More",
+  "viewAll": "View All News",
+  "author": "Quik",
+  "related": "Related News"
+}

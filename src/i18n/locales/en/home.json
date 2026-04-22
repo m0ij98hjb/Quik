@@ -1,0 +1,173 @@
+{
+  "hero": {
+    "title1": "Quik Fuel Stations",
+    "title2": "Fast Service, High Quality",
+    "subtitle": "We provide you with an exceptional fueling experience with outstanding customer service and strategic locations throughout the Kingdom",
+    "cta": "Discover More",
+    "stats": {
+      "stations": "Stations",
+      "branches": "Branches",
+      "services": "Services"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "We are a leading fuel station company",
+    "badge": "About Quik",
+    "heading": "Discover More About Us",
+    "description": "We provide high-quality fuel services with a comprehensive range of services",
+    "features": {
+      "quality": {
+        "title": "High Quality",
+        "desc": "We adhere to the highest quality standards in all our services"
+      },
+      "trust": {
+        "title": "Trust & Credibility",
+        "desc": "We ensure trust and credibility in every interaction"
+      },
+      "service": {
+        "title": "Exceptional Service",
+        "desc": "We provide outstanding customer service around the clock"
+      }
+    }
+  },
+  "services": {
+    "badge": "01 / Services",
+    "title": "Our Premium Services",
+    "subtitle": "We offer a comprehensive range of services to meet all your needs",
+    "fuel": {
+      "title": "Fuel Services",
+      "desc": "Best fuel types with global standards"
+    },
+    "restaurant": {
+      "title": "Restaurants",
+      "desc": "Various restaurants offering delicious cuisine"
+    },
+    "cafe": {
+      "title": "Cafes",
+      "desc": "Enjoy your favorite coffee during your journey"
+    },
+    "bathroom": {
+      "title": "Restrooms",
+      "desc": "Clean facilities with highest hygiene standards"
+    },
+    "games": {
+      "title": "Kids Games",
+      "desc": "Safe and fun play area for children"
+    },
+    "mosque": {
+      "title": "Prayer Areas",
+      "desc": "Comfortable prayer facilities"
+    },
+    "supermarket": {
+      "title": "Supermarket",
+      "desc": "Shop your daily needs with ease"
+    },
+    "atm": {
+      "title": "ATMs",
+      "desc": "24/7 banking services available"
+    },
+    "carwash": {
+      "title": "Car Wash",
+      "desc": "Professional car wash services"
+    },
+    "maintenance": {
+      "title": "Maintenance",
+      "desc": "Regular maintenance to keep your car in best condition"
+    },
+    "tires": {
+      "title": "Tire Services",
+      "desc": "Tire inspection and replacement services"
+    },
+    "oil": {
+      "title": "Oil Change",
+      "desc": "High-quality oils to protect your car engine"
+    },
+    "ev": {
+      "title": "EV Charging",
+      "desc": "Modern charging stations for electric vehicles"
+    },
+    "detailing": {
+      "title": "Car Detailing",
+      "desc": "Detailed car care services"
+    },
+    "airwater": {
+      "title": "Air & Water",
+      "desc": "Free air and water refill service"
+    }
+  },
+  "partners": {
+    "badge": "Partners",
+    "title": "Our Trusted Partners",
+    "subtitle": "We are proud of our partnerships with major brands",
+    "filter": {
+      "all": "All",
+      "banks": "Banks",
+      "oil": "Oil",
+      "tires": "Tires",
+      "cafes": "Cafes",
+      "restaurants": "Restaurants"
+    }
+  },
+  "stats": {
+    "badge": "Statistics",
+    "title": "Quik in Numbers",
+    "subtitle": "Our achievements speak of our continuous success",
+    "stations": "Fuel Stations",
+    "branches": "Branches Across the Kingdom",
+    "partners": "Strategic Partners",
+    "customers": "Happy Customers"
+  },
+  "vision": {
+    "badge": "Vision & Mission",
+    "title": "Towards a Better Future",
+    "subtitle": "Our vision and mission drive us towards continuous excellence",
+    "visionTitle": "Our Vision",
+    "missionTitle": "Our Mission"
+  },
+  "blog": {
+    "badge": "News Center",
+    "title": "Latest News & Updates",
+    "subtitle": "Follow our latest news and updates",
+    "readMore": "Read More",
+    "viewAll": "View All News"
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "We Are Here to Help",
+    "subtitle": "Contact us for any inquiry or suggestion"
+  },
+  "branches": {
+    "badge": "Branches",
+    "title": "Our Stations on Map",
+    "subtitle": "Find your nearest branch"
+  },
+  "goals": {
+    "badge": "Our Strategy",
+    "title": "Our Strategic Goals",
+    "leadership": {
+      "title": "Leadership",
+      "desc": "Achieving leadership in service center operations."
+    },
+    "safety": {
+      "title": "Safety",
+      "desc": "Enhancing occupational safety performance and environmental preservation."
+    },
+    "efficiency": {
+      "title": "Efficiency",
+      "desc": "Developing and maintaining competencies."
+    },
+    "growth": {
+      "title": "Growth",
+      "desc": "Maximizing the strategic growth of the establishment."
+    },
+    "partnership": {
+      "title": "Partnership",
+      "desc": "Partnership and integration with local and global strategic partners."
+    },
+    "expansion": {
+      "title": "Expansion",
+      "desc": "Expansion and spread throughout the Kingdom."
+    }
+  }
+}

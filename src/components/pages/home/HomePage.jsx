@@ -8,14 +8,9 @@ import VisionSection from "./components/VisionSection";
 import CountersSection from "./components/CountersSection";
 import PartnersSection from "./components/PartnersSection";
 import BlogSection from "./components/BlogSection";
-import ContactSection from "./components/ContactSection";
-import MapSection from "./components/MapSection";
-import Footer from "../../layout/Footer/Footer";
-
 export default function HomePage() {
   return (
     <>
-      <Navbar />
       <main className="main-area">
         <HeroSection />
         <AboutSection />
@@ -25,10 +20,7 @@ export default function HomePage() {
         <CountersSection />
         <PartnersSection />
         <BlogSection />
-        <ContactSection />
-        <MapSection />
       </main>
-      <Footer />
     </>
   );
 }

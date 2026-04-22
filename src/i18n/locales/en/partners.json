@@ -1,0 +1,22 @@
+{
+  "title": "Partners",
+  "subtitle": "Success Partners",
+  "badge": "Partners",
+  "heading": "Our Trusted Partners",
+  "description": "We are proud of our partnerships with major brands",
+  "filter": {
+    "all": "All",
+    "banks": "Banks",
+    "oil": "Oil",
+    "tires": "Tires",
+    "cafes": "Cafes",
+    "restaurants": "Restaurants"
+  },
+  "categories": {
+    "banks": "Banks",
+    "oil": "Oil",
+    "tires": "Tires",
+    "cafes": "Cafes",
+    "restaurants": "Restaurants"
+  }
+}

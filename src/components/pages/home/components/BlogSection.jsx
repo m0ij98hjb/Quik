@@ -1,150 +1,349 @@
 "use client";
-import React, { useEffect } from "react";
-import { FaUser, FaBookmark, FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import { renderToStaticMarkup } from "react-dom/server";
+import React from "react";
+import { motion } from "framer-motion";
+import { useLanguage } from "../../../../contexts/LanguageContext";
+import { FaUser, FaCalendarAlt, FaArrowLeft, FaNewspaper } from "react-icons/fa";
+
+const getBlogs = (language) => language === 'ar' ? [
+  {
+    title: "تجديد شهادة التأهيل لشركة كويك لمحطات الوقود",
+    description: "تم تجديد شهادة التأهيل لشركة كويك لعامي 2026-2027 بفضل التزامنا بأعلى معايير الجودة والسلامة في تشغيل محطات الوقود.",
+    img: "1766219254-IMG-20250508-WA0016.jpg",
+    link: "https://quikstations.com/blog/shh-d-ltahyl-lshrk-koyk-lmht-t-lokod",
+    date: "يناير 2025",
+    category: "شهادات",
+  },
+  {
+    title: "افتتاح محطة جيزان ابو عريش",
+    description: "قريبا سيتم افتتاح محطة جيزان ابو عريش لتقديم خدمات متميزة لعملائنا في منطقة جازان.",
+    img: "1765952002-IMG-20250508-WA0020.jpg",
+    link: "https://quikstations.com/blog/ftt-h-mht-gyz-n-bo-aarysh",
+    date: "ديسمبر 2024",
+    category: "افتتاحات",
+  },
+  {
+    title: "افتتاح فرع شركة كويك محطة طريق 80",
+    description: "قريبا افتتاح فرع طريق 80 خميس مشيط بتصميم عصري وخدمات متكاملة لراحة عملائنا.",
+    img: "1765951227-WhatsApp Image 2025-08-05 at 16.19.36_6718eea5.jpg",
+    link: "https://quikstations.com/blog/ftt-h-fraa-shrk-koyk-mht-tryk-80",
+    date: "نوفمبر 2024",
+    category: "افتتاحات",
+  },
+  {
+    title: "افتتاح فرع محطة كويك - المحالة",
+    description: "قريبا افتتاح فرع محطة كويك في المحالة بخدمات متنوعة ومميزة لتلبية احتياجات عملائنا.",
+    img: "1765949912-Screenshot 2025-09-24 090117.png",
+    link: "https://quikstations.com/blog/ftt-h-fraa-mht-koyk-lmh-l",
+    date: "أكتوبر 2024",
+    category: "افتتاحات",
+  },
+] : [
+  {
+    title: "Quik Company Qualification Certificate Renewal",
+    description: "The qualification certificate for Quik Company was renewed for 2026-2027 thanks to our commitment to the highest quality and safety standards in operating fuel stations.",
+    img: "1766219254-IMG-20250508-WA0016.jpg",
+    link: "https://quikstations.com/blog/shh-d-ltahyl-lshrk-koyk-lmht-t-lokod",
+    date: "January 2025",
+    category: "Certificates",
+  },
+  {
+    title: "Jazan Abu Arish Station Opening",
+    description: "Coming soon - Jazan Abu Arish station opening to provide distinguished services to our customers in the Jazan region.",
+    img: "1765952002-IMG-20250508-WA0020.jpg",
+    link: "https://quikstations.com/blog/ftt-h-mht-gyz-n-bo-aarysh",
+    date: "December 2024",
+    category: "Openings",
+  },
+  {
+    title: "Route 80 Branch Opening",
+    description: "Coming soon - Route 80 Khamis Mushait branch with modern design and integrated services for our customers' comfort.",
+    img: "1765951227-WhatsApp Image 2025-08-05 at 16.19.36_6718eea5.jpg",
+    link: "https://quikstations.com/blog/ftt-h-fraa-shrk-koyk-mht-tryk-80",
+    date: "November 2024",
+    category: "Openings",
+  },
+  {
+    title: "Al-Mahalah Station Branch Opening",
+    description: "Coming soon - Quik station branch in Al-Mahalah with diverse and distinguished services to meet our customers' needs.",
+    img: "1765949912-Screenshot 2025-09-24 090117.png",
+    link: "https://quikstations.com/blog/ftt-h-fraa-mht-koyk-lmh-l",
+    date: "October 2024",
+    category: "Openings",
+  },
+];
 
 export default function BlogSection() {
-  useEffect(() => {
-    const initOwl = () => {
-      if (window.$ && window.$.fn && window.$.fn.owlCarousel && window.$("#blogCarousel").length > 0) {
-        if (!window.$("#blogCarousel").hasClass("owl-loaded")) {
-          window.$("#blogCarousel").owlCarousel({
-            loop: true,
-            margin: 30,
-            nav: true,
-            navText: [
-              renderToStaticMarkup(
-                <div className="nav-btn-outer no-pseudo">
-                  <div className="nav-btn-inner" style={{ fontSize: "20px" }}>
-                    <FaArrowRight size={20} />
-                  </div>
-                </div>
-              ),
-              renderToStaticMarkup(
-                <div className="nav-btn-outer no-pseudo">
-                  <div className="nav-btn-inner" style={{ fontSize: "20px" }}>
-                    <FaArrowLeft size={20} />
-                  </div>
-                </div>
-              ),
-            ],
-            dots: false,
-            rtl: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            navContainer: "#blog-nav-container",
-            responsive: {
-              0: { items: 1 },
-              768: { items: 2 },
-              992: { items: 3 },
-            },
-          });
-        }
-      } else {
-        setTimeout(initOwl, 500);
-      }
-    };
-    initOwl();
-  }, []);
-
-  const blogs = [
-    {
-      title: "تجديد شهادة التأهيل لشركة كويك لمحطات الوقود",
-      description: "تم تجديد شهادة التأهيل لشركة كويك لعامي 2026-2027",
-      img: "1766219254-IMG-20250508-WA0016.jpg",
-      link: "https://quikstations.com/blog/shh-d-ltahyl-lshrk-koyk-lmht-t-lokod",
-    },
-    {
-      title: "افتتاح محطة جيزان ابو عريش",
-      description: "قريبا سيتم افتتاح محطة جيزان ابو عريش",
-      img: "1765952002-IMG-20250508-WA0020.jpg",
-      link: "https://quikstations.com/blog/ftt-h-mht-gyz-n-bo-aarysh",
-    },
-    {
-      title: "افتتاح فرع شركة كويك محطة طريق 80",
-      description: "قريبا افتتاح فرع طريق 80 خميس مشيط",
-      img: "1765951227-WhatsApp Image 2025-08-05 at 16.19.36_6718eea5.jpg",
-      link: "https://quikstations.com/blog/ftt-h-fraa-shrk-koyk-mht-tryk-80",
-    },
-    {
-      title: "افتتاح فرع محطة كويك - المحالة",
-      description: "قريبا افتتاح فرع محطة كويك في المحالة",
-      img: "1765949912-Screenshot 2025-09-24 090117.png",
-      link: "https://quikstations.com/blog/ftt-h-fraa-mht-koyk-lmh-l",
-    },
-  ];
-
+  const { language, t } = useLanguage();
+  const blogs = getBlogs(language);
   return (
-    <section className="section pb-minus-76" id="blog" data-aos="fade-up">
-      <style>{`
-        #blog #blog-nav-container {
-          display: flex !important;
-          gap: 12px;
-          align-items: center;
-          margin-bottom: 20px;
-        }
-        /* Override default owl-nav behavior in this section */
-        #blog .owl-nav {
-          display: none !important;
-        }
-        #blog .owl-nav button {
-          background: transparent !important;
-          border: none !important;
-          padding: 0 !important;
-          margin: 0 !important;
-        }
-      `}</style>
-      <div className="container">
+    <section 
+      id="blog"
+      style={{ 
+        padding: "120px 0",
+        backgroundColor: "var(--bg-primary)",
+        position: "relative",
+        overflow: "hidden"
+      }}
+    >
+      {/* Background Grid */}
+      <div style={{
+        position: "absolute",
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundImage: `linear-gradient(rgba(255,152,0,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,152,0,0.02) 1px, transparent 1px)`,
+        backgroundSize: "60px 60px",
+        zIndex: 0
+      }} />
+
+      {/* Glow Orbs */}
+      <div style={{
+        position: "absolute",
+        top: "10%",
+        left: "5%",
+        width: "400px",
+        height: "400px",
+        background: "radial-gradient(circle, rgba(255,152,0,0.08) 0%, transparent 70%)",
+        filter: "blur(80px)",
+        zIndex: 0
+      }} />
+
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-5"
+        >
+          <motion.div
+            initial={{ scale: 0.8 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              padding: "10px 25px",
+              background: "rgba(255,152,0,0.1)",
+              border: "1px solid rgba(255,152,0,0.3)",
+              borderRadius: "30px",
+              color: "#ff9800",
+              fontSize: "14px",
+              fontWeight: 600,
+              marginBottom: "20px",
+              fontFamily: "'Cairo', sans-serif"
+            }}
+          >
+            <FaNewspaper />
+            {t('nav.blog')}
+          </motion.div>
+
+          <h2 style={{
+            fontSize: "clamp(32px, 5vw, 48px)",
+            fontWeight: 800,
+            color: "var(--text-primary)",
+            marginBottom: "15px",
+            fontFamily: "'Cairo', sans-serif"
+          }}>
+            {language === 'ar' ? (
+              <>آخر <span style={{ color: "#ff9800" }}>الأخبار</span> والمستجدات</>
+            ) : (
+              <><span style={{ color: "#ff9800" }}>Latest</span> News & Updates</>
+            )}
+          </h2>
+
+          <p style={{
+            fontSize: "16px",
+            color: "var(--text-muted)",
+            fontFamily: "'Cairo', sans-serif",
+            maxWidth: "600px",
+            margin: "0 auto"
+          }}>
+            {language === 'ar'
+              ? 'تابعونا لمعرفة آخر مستجدات وأخبار شركة كويك لمحطات الوقود'
+              : 'Follow us to know the latest updates and news from Quik Fuel Stations Company'}
+          </p>
+        </motion.div>
+
+        {/* Blog Grid */}
         <div className="row">
-          <div className="col-md-12 d-flex align-items-center justify-content-between">
-            <div className="section-heading-left" data-aos="fade-right" data-aos-delay="100">
-              <span>الاخبار</span>
-              <h2>شركة كويك لمحطات الوقود</h2>
-            </div>
-            {/* Custom Nav Container for Blog Carousel */}
-            <div id="blog-nav-container" className="no-pseudo" style={{ display: 'flex', gap: '10px' }}></div>
-          </div>
-        </div>
-        <div className="owl-carousel owl-theme" id="blogCarousel">
           {blogs.map((blog, index) => (
-            <div key={index} className="item" data-aos="fade-up" data-aos-delay={100 * (index + 1)}>
-              <div className="blog-item">
-                <div className="blog-img">
-                  <a href={blog.link}>
-                    <img
-                      src={`https://quikstations.com/uploads/img/blogs/${blog.img}`}
-                      alt="Blog image"
-                      className="img-fluid"
-                    />
-                  </a>
+            <motion.div
+              key={index}
+              className="col-lg-3 col-md-6 mb-4"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+            >
+              <motion.div
+                whileHover={{ y: -10 }}
+                style={{
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                  borderRadius: "25px",
+                  border: "1px solid rgba(255,152,0,0.1)",
+                  overflow: "hidden",
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  position: "relative"
+                }}
+              >
+                {/* Category Badge */}
+                <div style={{
+                  position: "absolute",
+                  top: "15px",
+                  right: "15px",
+                  padding: "6px 14px",
+                  background: "rgba(255,152,0,0.9)",
+                  borderRadius: "20px",
+                  color: "#000",
+                  fontSize: "11px",
+                  fontWeight: 700,
+                  fontFamily: "'Cairo', sans-serif",
+                  zIndex: 2
+                }}>
+                  {blog.category}
                 </div>
-                <div className="blog-body">
-                  <div className="blog-meta">
-                    <a href="#">
-                      <span className="no-pseudo d-inline-flex align-items-center">
-                        <FaUser style={{ marginLeft: "5px" }} /> Super-Admin User{" "}
-                      </span>
-                    </a>
-                    <a href="#">
-                      <span className="no-pseudo d-inline-flex align-items-center">
-                        <FaBookmark style={{ marginLeft: "5px" }} />كويك
-                      </span>
-                    </a>
+
+                {/* Image */}
+                <div style={{
+                  height: "220px",
+                  overflow: "hidden",
+                  position: "relative"
+                }}>
+                  <motion.img
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.4 }}
+                    src={`https://quikstations.com/uploads/img/blogs/${blog.img}`}
+                    alt={blog.title}
+                    style={{ 
+                      width: "100%", 
+                      height: "100%",
+                      objectFit: "cover"
+                    }}
+                  />
+                  <div style={{
+                    position: "absolute",
+                    top: 0, left: 0, right: 0, bottom: 0,
+                    background: "linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.3) 50%, transparent 100%)"
+                  }} />
+                </div>
+
+                {/* Content */}
+                <div style={{ 
+                  padding: "25px", 
+                  flex: 1, 
+                  display: "flex", 
+                  flexDirection: "column",
+                  position: "relative"
+                }}>
+                  {/* Meta */}
+                  <div style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "15px",
+                    marginBottom: "15px",
+                    fontSize: "12px",
+                    color: "var(--text-secondary)",
+                    fontFamily: "'Cairo', sans-serif"
+                  }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                      <FaCalendarAlt size={11} /> {blog.date}
+                    </span>
+                    <span style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                      <FaUser size={11} /> {language === 'ar' ? 'كويك' : 'Quik'}
+                    </span>
                   </div>
-                  <h5>
-                    <a href={blog.link}>{blog.title}</a>
-                  </h5>
-                  <p>{blog.description}</p>
-                  <a href={blog.link} className="blog-link no-pseudo d-inline-flex align-items-center">
-                    قراءة المزيد
-                    <FaArrowRight style={{ marginRight: "5px" }} />
-                  </a>
+
+                  {/* Title */}
+                  <h4 style={{
+                    fontSize: "17px",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    marginBottom: "12px",
+                    fontFamily: "'Cairo', sans-serif",
+                    lineHeight: "1.6"
+                  }}>
+                    {blog.title}
+                  </h4>
+
+                  {/* Description */}
+                  <p style={{
+                    fontSize: "14px",
+                    color: "var(--text-muted)",
+                    marginBottom: "20px",
+                    fontFamily: "'Cairo', sans-serif",
+                    lineHeight: "1.7",
+                    flex: 1
+                  }}>
+                    {blog.description}
+                  </p>
+
+                  {/* Link */}
+                  <motion.a 
+                    href={blog.link}
+                    whileHover={{ x: -5 }}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      color: "#ff9800",
+                      textDecoration: "none",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      fontFamily: "'Cairo', sans-serif",
+                      marginTop: "auto"
+                    }}
+                  >
+                    {t('blog.readmore')}
+                    <motion.span
+                      initial={{ x: 0 }}
+                      whileHover={{ x: language === 'ar' ? -5 : 5 }}
+                    >
+                      <FaArrowLeft size={14} style={{ transform: language === 'ar' ? 'none' : 'rotate(180deg)' }} />
+                    </motion.span>
+                  </motion.a>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
+
+        {/* View All Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="text-center mt-4"
+        >
+          <motion.a
+            href="/blog"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
+              padding: "15px 40px",
+              background: "linear-gradient(135deg, rgba(255,152,0,0.1) 0%, rgba(255,152,0,0.05) 100%)",
+              border: "2px solid rgba(255,152,0,0.3)",
+              borderRadius: "50px",
+              color: "#ff9800",
+              textDecoration: "none",
+              fontSize: "16px",
+              fontWeight: 700,
+              fontFamily: "'Cairo', sans-serif",
+              transition: "all 0.3s ease"
+            }}
+          >
+            <FaNewspaper />
+            {language === 'ar' ? 'عرض جميع الأخبار' : 'View All News'}
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );

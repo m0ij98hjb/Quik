@@ -1,17 +1,26 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 
 const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState("light");
 
-  // Avoid hydration mismatch by waiting for mount
   useEffect(() => {
     setMounted(true);
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
+    // Dispatch custom event for immediate updates
+    window.dispatchEvent(new StorageEvent("storage", { key: "theme", newValue: newTheme }));
+  };
 
   if (!mounted) {
     return (
@@ -23,7 +32,7 @@ const ThemeToggle = () => {
 
   return (
     <button
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={toggleTheme}
       className="theme-toggle-btn"
       aria-label="Toggle Theme"
       title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
@@ -52,7 +61,7 @@ const ThemeToggle = () => {
         }
 
         .theme-toggle-btn:hover {
-          background: rgba(var(--color-primary-rgb, 255, 69, 0), 0.1);
+          background: rgba(255, 152, 0, 0.1);
           transform: scale(1.1);
         }
 
@@ -75,8 +84,6 @@ const ThemeToggle = () => {
         .moon {
           color: #5c7cfa;
         }
-
-        /* Responsive adjustments can be added here if needed */
       `}</style>
     </button>
   );

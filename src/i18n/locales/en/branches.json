@@ -1,0 +1,20 @@
+{
+  "title": "Branches",
+  "subtitle": "Find your nearest branch",
+  "badge": "Branches",
+  "heading": "Our Stations on Map",
+  "map": "Our Branches on Map",
+  "description": "Click on any branch to navigate to it",
+  "list": "Branches List",
+  "click": "Click on a branch to view it on the map",
+  "listTitle": "Station List",
+  "chooseBranch": "Choose a Branch",
+  "status": {
+    "active": "Active",
+    "development": "Under Development",
+    "contracted": "Contracted"
+  },
+  "address": "Address",
+  "region": "Region",
+  "directions": "Get Directions"
+}

@@ -1,88 +1,151 @@
+"use client";
 import React from "react";
-import { FaAmbulance, FaChartLine, FaUsers, FaPlus, FaFistRaised } from "react-icons/fa";
-import { SiAccusoft } from "react-icons/si";
+import { motion } from "framer-motion";
+import { useLanguage } from "../../../../contexts/LanguageContext";
+import { FaAmbulance, FaChartLine, FaUsers, FaPlus, FaFistRaised, FaTrophy } from "react-icons/fa";
+
+const getGoals = (language) => language === 'ar' ? [
+  { title: "الريادة", description: "تحقيق الريادة في تشغيل مراكز الخدمة.", icon: FaTrophy },
+  { title: "السلامة", description: "تعزيز أداء السلامة المهنية والحفاظ على البيئة.", icon: FaAmbulance },
+  { title: "الكفاءة", description: "تطوير الكفاءات والحفاظ عليها.", icon: FaFistRaised },
+  { title: "النمو", description: "تعظيم النمو الاستراتيجي للمنشأة.", icon: FaChartLine },
+  { title: "الشراكة والتكامل", description: "الشراكة والتكامل مع شركاء استراتيجيين محليين وعالميين.", icon: FaUsers },
+  { title: "التوسع", description: "التوسع والانتشار في ربوع المملكة", icon: FaPlus },
+] : [
+  { title: "Leadership", description: "Achieving leadership in service center operations.", icon: FaTrophy },
+  { title: "Safety", description: "Enhancing occupational safety performance and environmental preservation.", icon: FaAmbulance },
+  { title: "Efficiency", description: "Developing and maintaining competencies.", icon: FaFistRaised },
+  { title: "Growth", description: "Maximizing the strategic growth of the establishment.", icon: FaChartLine },
+  { title: "Partnership", description: "Partnership and integration with local and global strategic partners.", icon: FaUsers },
+  { title: "Expansion", description: "Expansion and spread throughout the Kingdom.", icon: FaPlus },
+];
 
 export default function GoalsSection() {
-  const goals = [
-    {
-      title: "الريادة",
-      description: "تحقيق الريادة في تشغيل مراكز الخدمة.",
-      iconClass: "fab fa-accusoft",
-      icon: <SiAccusoft size={30} color="#fff" />,
-      delay: "0.0s",
-    },
-    {
-      title: "السلامة",
-      description: "تعزيز أداء السلامة المهنية والحفاظ على البيئة.",
-      iconClass: "fas fa-ambulance",
-      icon: <FaAmbulance size={30} color="#fff" />,
-      delay: "0.1s",
-    },
-    {
-      title: "الكفاءة",
-      description: "تطوير الكفاءات والحفاظ عليها.",
-      iconClass: "fas fa-fist-raised",
-      icon: <FaFistRaised size={30} color="#fff" />,
-      delay: "0.2s",
-    },
-    {
-      title: "النمو",
-      description: "تعظيم النمو الاستراتيجي للمنشأة.",
-      iconClass: "fas fa-chart-line",
-      icon: <FaChartLine size={30} color="#fff" />,
-      delay: "0.3s",
-    },
-    {
-      title: "الشراكة والتكامل",
-      description: "الشراكة والتكامل مع شركاء استراتيجيين محليين وعالميين.",
-      iconClass: "fas fa-users",
-      icon: <FaUsers size={30} color="#fff" />,
-      delay: "0.4s",
-    },
-    {
-      title: "التوسع",
-      description: "التوسع والانتشار في ربوع الممكلة",
-      iconClass: "fas fa-plus",
-      icon: <FaPlus size={30} color="#fff" />,
-      delay: "0.5s",
-    },
-  ];
-
+  const { language, t } = useLanguage();
+  const goals = getGoals(language);
   return (
-    <section className="section pb-minus-76 bg-primary-light" data-scroll-index="5" id="myresume" data-aos="fade-up">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-6">
-            <div className="section-heading-left" data-aos="fade-right" data-aos-delay="100">
-              <span>أهدافنا</span>
-              <h2>الأهداف الاستراتيجية</h2>
-            </div>
-          </div>
-        </div>
+    <section 
+      id="goals"
+      style={{ 
+        padding: "120px 0",
+        backgroundColor: "var(--bg-primary)",
+        position: "relative",
+        overflow: "hidden"
+      }}
+    >
+      {/* Background Elements */}
+      <div style={{
+        position: "absolute",
+        top: 0, left: 0, right: 0, bottom: 0,
+        backgroundImage: `linear-gradient(rgba(255,152,0,0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,152,0,0.02) 1px, transparent 1px)`,
+        backgroundSize: "60px 60px",
+        zIndex: 0
+      }} />
+
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-5"
+        >
+          <span style={{
+            display: "inline-block",
+            padding: "8px 20px",
+            background: "rgba(255,152,0,0.1)",
+            border: "1px solid rgba(255,152,0,0.3)",
+            borderRadius: "30px",
+            color: "#ff9800",
+            fontSize: "14px",
+            fontWeight: 600,
+            marginBottom: "20px",
+            fontFamily: "'Cairo', sans-serif"
+          }}>
+            {language === 'ar' ? 'استراتيجيتنا' : 'Our Strategy'}
+          </span>
+          <h2 style={{
+            fontSize: "clamp(32px, 5vw, 48px)",
+            fontWeight: 800,
+            color: "var(--text-primary)",
+            marginBottom: "20px",
+            fontFamily: "'Cairo', sans-serif"
+          }}>
+            {language === 'ar' ? (
+              <>أهدافنا <span style={{ color: "#ff9800" }}>الاستراتيجية</span></>
+            ) : (
+              <><span style={{ color: "#ff9800" }}>Our</span> Strategic Goals</>
+            )}
+          </h2>
+        </motion.div>
+
+        {/* Goals Grid */}
         <div className="row">
           {goals.map((goal, index) => (
-            <div
+            <motion.div
               key={index}
-              className="col-lg-6"
-              data-aos="fade-up"
-              data-aos-delay={100 * (index % 2 + 1)}
+              className="col-lg-6 mb-4"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <div className="resume-item">
-                <div className="body">
-                  <div className="icon-outer-line">
-                    <div className="icon-inner-line">
-                      <span className={`${goal.iconClass} no-pseudo d-flex align-items-center justify-content-center`}>
-                        {goal.icon}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="text">
-                    <h5>{goal.title}</h5>
-                    <span>{goal.description}</span>
-                  </div>
+              <motion.div
+                whileHover={{ y: -5, transition: { duration: 0.3 } }}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "20px",
+                  padding: "30px",
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                  borderRadius: "20px",
+                  border: "1px solid rgba(255,152,0,0.1)",
+                  height: "100%"
+                }}
+              >
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 10 }}
+                  style={{
+                    width: "70px",
+                    height: "70px",
+                    minWidth: "70px",
+                    background: "linear-gradient(135deg, #ff9800 0%, #e67e22 100%)",
+                    borderRadius: "15px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0 10px 30px rgba(255,152,0,0.3)"
+                  }}
+                >
+                  <goal.icon style={{ fontSize: "28px", color: "var(--text-primary)" }} />
+                </motion.div>
+
+                {/* Content */}
+                <div>
+                  <h4 style={{
+                    fontSize: "22px",
+                    fontWeight: 700,
+                    color: "var(--text-primary)",
+                    marginBottom: "10px",
+                    fontFamily: "'Cairo', sans-serif"
+                  }}>
+                    {goal.title}
+                  </h4>
+                  <p style={{
+                    fontSize: "15px",
+                    color: "var(--text-secondary)",
+                    margin: 0,
+                    fontFamily: "'Cairo', sans-serif",
+                    lineHeight: "1.7"
+                  }}>
+                    {goal.description}
+                  </p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>

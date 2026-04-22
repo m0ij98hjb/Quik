@@ -1,4 +1,7 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
+import { useLanguage } from "../../../../contexts/LanguageContext";
 import {
   FaGasPump,
   FaStoreAlt,
@@ -14,65 +17,203 @@ import {
   FaChargingStation,
   FaCar,
   FaTint,
-  FaArrowRight,
+  FaArrowLeft,
 } from "react-icons/fa";
 
+const getServices = (language) => language === 'ar' ? [
+  { title: "وقود", icon: FaGasPump },
+  { title: "مطاعم", icon: FaStoreAlt },
+  { title: "مقاهي وكافيهات", icon: FaCoffee },
+  { title: "دوارات مياه", icon: FaToilet },
+  { title: "ألعاب أطفال", icon: FaChessKnight },
+  { title: "مساجد رجال ونساء", icon: FaMosque },
+  { title: "سوبر ماركت", icon: FaStoreAlt },
+  { title: "صراف آلي", icon: FaCreditCard },
+  { title: "غسيل سيارات", icon: FaTruckPickup },
+  { title: "صيانة", icon: FaWrench },
+  { title: "إطارات", icon: FaCarCrash },
+  { title: "تغيير زيوت", icon: FaOilCan },
+  { title: "شاحن سيارات كهربائية", icon: FaChargingStation },
+  { title: "زينة سيارات", icon: FaCar },
+  { title: "هواء وماء", icon: FaTint },
+] : [
+  { title: "Fuel", icon: FaGasPump },
+  { title: "Restaurants", icon: FaStoreAlt },
+  { title: "Cafes", icon: FaCoffee },
+  { title: "Restrooms", icon: FaToilet },
+  { title: "Kids Games", icon: FaChessKnight },
+  { title: "Mosques", icon: FaMosque },
+  { title: "Supermarket", icon: FaStoreAlt },
+  { title: "ATM", icon: FaCreditCard },
+  { title: "Car Wash", icon: FaTruckPickup },
+  { title: "Maintenance", icon: FaWrench },
+  { title: "Tires", icon: FaCarCrash },
+  { title: "Oil Change", icon: FaOilCan },
+  { title: "EV Charging", icon: FaChargingStation },
+  { title: "Car Detailing", icon: FaCar },
+  { title: "Air & Water", icon: FaTint },
+];
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-50px" },
+  transition: { duration: 0.6, ease: "easeOut" }
+};
+
 export default function ServicesSection() {
-  const services = [
-    { title: "وقود", iconClass: "fas fa-gas-pump", icon: <FaGasPump />, delay: "0.0s" },
-    { title: "مطاعم", iconClass: "fas fa-store-alt", icon: <FaStoreAlt />, delay: "0.1s" },
-    { title: "مقاهي وكافيهات", iconClass: "fas fa-coffee", icon: <FaCoffee />, delay: "0.2s" },
-    { title: "دوارت مياه", iconClass: "fas fa-toilet", icon: <FaToilet />, delay: "0.3s" },
-    { title: "العاب أطفال", iconClass: "fas fa-chess-knight", icon: <FaChessKnight />, delay: "0.4s" },
-    { title: "مساجد رجال ونساء", iconClass: "fas fa-mosque", icon: <FaMosque />, delay: "0.5s" },
-    { title: "سوبر ماركت", iconClass: "fas fa-store-alt", icon: <FaStoreAlt />, delay: "0.6s" },
-    { title: "صراف آلي", iconClass: "fas fa-credit-card", icon: <FaCreditCard />, delay: "0.7s" },
-    { title: "غسيل سيارات", iconClass: "fas fa-truck-pickup", icon: <FaTruckPickup />, delay: "0.8s" },
-    { title: "صيانه", iconClass: "fas fa-wrench", icon: <FaWrench />, delay: "0.9s" },
-    { title: "إطارات", iconClass: "fas fa-car-crash", icon: <FaCarCrash />, delay: "0.10s" },
-    { title: "تغيير زيوت", iconClass: "fas fa-oil-can", icon: <FaOilCan />, delay: "0.11s" },
-    { title: "شاحن سيارات كهربائية", iconClass: "fas fa-charging-station", icon: <FaChargingStation />, delay: "0.12s" },
-    { title: "زينة سيارات", iconClass: "fas fa-car", icon: <FaCar />, delay: "0.13s" },
-    { title: "هواء وماء", iconClass: "fas fa-tint", icon: <FaTint />, delay: "0.14s" },
-  ];
+  const { language, t } = useLanguage();
+  const services = getServices(language);
 
   return (
-    <section className="section pb-minus-70" data-scroll-index="3" id="service" data-aos="fade-up">
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-lg-6">
-            <div className="section-heading" data-aos="fade-down" data-aos-delay="100">
-              <span>خدماتنا</span>
-              <h2>الخدمات</h2>
-            </div>
-          </div>
-        </div>
+    <section 
+      id="services"
+      style={{ 
+        padding: "120px 0",
+        backgroundColor: "var(--bg-primary)",
+        position: "relative",
+        overflow: "hidden"
+      }}
+    >
+      {/* Top Accent Line */}
+      <div style={{
+        position: "absolute",
+        top: 0, left: 0, right: 0,
+        height: "1px",
+        background: "linear-gradient(90deg, transparent, rgba(255,152,0,0.5), transparent)"
+      }} />
+
+      <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        {/* Section Header */}
+        <motion.div 
+          {...fadeInUp}
+          className="text-center mb-5"
+        >
+          <span style={{
+            display: "inline-block",
+            padding: "8px 20px",
+            background: "rgba(255,152,0,0.1)",
+            border: "1px solid rgba(255,152,0,0.3)",
+            borderRadius: "30px",
+            color: "#ff9800",
+            fontSize: "14px",
+            fontWeight: 600,
+            marginBottom: "20px",
+            fontFamily: "'Cairo', sans-serif"
+          }}>
+            {t('home.services.title')}
+          </span>
+          <h2 style={{
+            fontSize: "clamp(32px, 5vw, 48px)",
+            fontWeight: 800,
+            color: "var(--text-primary)",
+            marginBottom: "20px",
+            fontFamily: "'Cairo', sans-serif"
+          }}>
+            {language === 'ar' ? (
+              <>كل ما تحتاجه في <span style={{ color: "#ff9800" }}>محطة واحدة</span></>
+            ) : (
+              <><span style={{ color: "#ff9800" }}>Everything</span> You Need at One Station</>
+            )}
+          </h2>
+          <p style={{
+            fontSize: "18px",
+            color: "var(--text-muted)",
+            maxWidth: "600px",
+            margin: "0 auto",
+            fontFamily: "'Cairo', sans-serif"
+          }}>
+            {language === 'ar'
+              ? 'نقدم مجموعة متكاملة من الخدمات عالية الجودة لضمان راحتك ورفاهيتك'
+              : 'We offer a complete set of high-quality services to ensure your comfort and well-being'}
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
         <div className="row">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay={100 * (index % 3 + 1)}
+              className="col-lg-4 col-md-6 mb-4"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05, duration: 0.5 }}
             >
-              <div className="services-item">
-                <div className="body">
-                  <h4>0{index + 1} </h4>
-                  <h5>{service.title}</h5>
-                  <a href="#" className="no-pseudo d-inline-flex align-items-center">
-                    قراءة المزيد <i className="fa fa-arrow-right d-inline-flex align-items-center justify-content-center" style={{marginRight: "5px"}}>
-                      <FaArrowRight size={14} color="#F5A623" />
-                    </i>
-                  </a>
-                </div>
-                <div className="icon">
-                  <span className={`${service.iconClass} no-pseudo d-flex align-items-center justify-content-center`}>
-                    {React.cloneElement(service.icon, { size: 35, color: "#fff" })}
-                  </span>
-                </div>
-                <div className="icon-border"></div>
-              </div>
-            </div>
+              <motion.div
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                style={{
+                  padding: "35px 30px",
+                  background: "var(--bg-card)",
+                  borderRadius: "20px",
+                  border: "1px solid var(--border-color)",
+                  height: "100%",
+                  position: "relative",
+                  overflow: "hidden",
+                  boxShadow: "var(--shadow-md)"
+                }}
+              >
+                {/* Number */}
+                <span style={{
+                  position: "absolute",
+                  top: "20px",
+                  left: "20px",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                  color: "var(--text-secondary)",
+                  fontFamily: "'Cairo', sans-serif"
+                }}>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  style={{
+                    width: "70px",
+                    height: "70px",
+                    background: "linear-gradient(135deg, rgba(255,152,0,0.2) 0%, rgba(255,152,0,0.1) 100%)",
+                    borderRadius: "15px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "20px",
+                    border: "1px solid rgba(255,152,0,0.3)"
+                  }}
+                >
+                  <service.icon style={{ fontSize: "30px", color: "#ff9800" }} />
+                </motion.div>
+
+                {/* Title */}
+                <h4 style={{
+                  fontSize: "22px",
+                  fontWeight: 700,
+                  color: "var(--text-primary)",
+                  marginBottom: "15px",
+                  fontFamily: "'Cairo', sans-serif"
+                }}>
+                  {service.title}
+                </h4>
+
+                {/* Link */}
+                <a 
+                  href="#" 
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    color: "#ff9800",
+                    textDecoration: "none",
+                    fontSize: "14px",
+                    fontWeight: 600,
+                    fontFamily: "'Cairo', sans-serif"
+                  }}
+                >
+                  اكتشف المزيد
+                  <FaArrowLeft size={12} />
+                </a>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </div>
