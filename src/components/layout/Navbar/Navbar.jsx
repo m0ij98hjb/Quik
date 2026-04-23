@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
+import { 
+  FaAngleDown, FaBars, FaTimes, FaHome, FaInfoCircle, 
+  FaCogs, FaHandshake, FaStore, FaNewspaper, FaMapMarkerAlt, 
+  FaBriefcase, FaPhoneAlt 
+} from "react-icons/fa";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { useLanguage } from "../../../contexts/LanguageContext";
 
@@ -73,7 +77,7 @@ const QuikNavbar = () => {
           display: grid;
           grid-template-columns: 1fr auto 1fr;
           align-items: center;
-          padding: 15px 40px;
+          padding: 12px 40px;
           max-width: 1600px;
           margin: 0 auto;
           /* Removed uniform column-gap to allow asymmetric spacing */
@@ -101,7 +105,7 @@ const QuikNavbar = () => {
           // background: var(--bg-glass, rgba(0,0,0,0.5));
         }
         .quik-logo img {
-          height: 66px;
+          height: 72px;
           width: auto;
           filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
@@ -218,7 +222,6 @@ const QuikNavbar = () => {
           border-color: rgba(255, 152, 0, 0.5);
           color: #ff9800;
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(255, 152, 0, 0.2);
         }
         
         .quik-lang-dropdown {
@@ -336,13 +339,20 @@ const QuikNavbar = () => {
         }
 
         .quik-mobile-link {
-          display: block; padding: 16px 30px;
+          display: flex; 
+          align-items: center;
+          gap: 12px;
+          padding: 16px 30px;
           font-size: 16px; font-weight: 600; color: var(--text-primary, rgba(255, 255, 255, 0.9));
           text-decoration: none; font-family: 'Cairo', sans-serif;
           border: none; background: none;
-          text-align: right; width: 100%; cursor: pointer;
+          width: 100%; cursor: pointer;
           transition: all 0.3s ease;
           position: relative;
+        }
+        .quik-mobile-link svg {
+          color: #ff9800;
+          flex-shrink: 0;
         }
         .quik-mobile-link:hover, .quik-mobile-link.active {
           color: #ff9800;
@@ -383,12 +393,38 @@ const QuikNavbar = () => {
         }
         
         @media (max-width: 992px) {
-          .quik-nav-menu, .quik-lang { display: none; }
-          .quik-mobile-btn { display: flex; }
-          .quik-navbar-inner { padding: 15px 25px; }
-
+          .quik-nav-menu, 
+          .quik-lang, 
+          .quik-careers-btn, 
+          .desktop-actions > a:last-child { 
+            display: none !important; 
+          }
+          .desktop-actions {
+            display: flex !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .quik-mobile-btn { 
+            display: flex; 
+            width: 42px; 
+            height: 42px; 
+            font-size: 18px;
+          }
+          .quik-navbar-inner { 
+            padding: 8px 20px;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            grid-template-columns: none !important;
+          }
+          /* Container for actions to keep them together on the right */
+          .mobile-actions-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Professional spacing */
+          }
           .quik-logo img {
-            height: 50px;
+            height: 60px;
           }
         }
 
@@ -397,7 +433,7 @@ const QuikNavbar = () => {
             padding: 12px 20px;
           }
           .quik-logo img {
-            height: 42px;
+            height: 55px;
           }
           .quik-mobile-menu {
             width: 100%;
@@ -456,114 +492,115 @@ const QuikNavbar = () => {
             </li>
             <li className="quik-nav-item">
               <a href="/branches" className={`quik-nav-link ${pathname === '/branches' ? 'active' : ''}`}>
-
                 {t('nav.branches')}
               </a>
             </li>
           </ul>
 
-          {/* Desktop Actions (Theme + Lang) */}
-          <div className="desktop-actions">
-            <ThemeToggle />
+          {/* Actions (Theme + Lang + Menu) */}
+          <div className="mobile-actions-wrapper">
+            <div className="desktop-actions">
+              <ThemeToggle />
 
-            {/* Language Switcher */}
-            <div className={`quik-lang ${isLangOpen ? "open" : ""}`}>
-              <button
-                className="quik-lang-btn"
-                onClick={(e) => { e.stopPropagation(); setIsLangOpen(!isLangOpen); }}
+              {/* Language Switcher */}
+              <div className={`quik-lang ${isLangOpen ? "open" : ""}`}>
+                <button
+                  className="quik-lang-btn"
+                  onClick={(e) => { e.stopPropagation(); setIsLangOpen(!isLangOpen); }}
+                >
+                  {language === 'ar' ? 'العربية' : 'English'}
+                  <FaAngleDown className={`quik-nav-arrow ${isLangOpen ? "open" : ""}`} />
+                </button>
+                <ul className="quik-lang-dropdown">
+                  <li><button onClick={() => { changeLanguage('ar'); setIsLangOpen(false); }}>العربية</button></li>
+                  <li><button onClick={() => { changeLanguage('en'); setIsLangOpen(false); }}>English</button></li>
+                </ul>
+              </div>
+
+              {/* Careers Button - Styled like Language */}
+              <a
+                href="/careers"
+                className={`quik-careers-btn ${pathname === '/careers' ? 'active' : ''}`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 20px',
+                  background: pathname === '/careers' ? 'rgba(255, 152, 0, 0.25)' : 'rgba(255, 152, 0, 0.1)',
+                  border: pathname === '/careers' ? '1px solid rgba(255, 152, 0, 0.6)' : '1px solid rgba(255, 152, 0, 0.3)',
+                  borderRadius: '50px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color: pathname === '/careers' ? '#ff9800' : 'var(--text-primary, rgba(255, 255, 255, 0.9))',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.background = 'rgba(255, 152, 0, 0.2)';
+                  e.target.style.borderColor = 'rgba(255, 152, 0, 0.5)';
+                  e.target.style.color = '#ff9800';
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = 'none';
+                }}
+                onMouseLeave={(e) => {
+                  if (pathname !== '/careers') {
+                    e.target.style.background = 'rgba(255, 152, 0, 0.1)';
+                    e.target.style.borderColor = 'rgba(255, 152, 0, 0.3)';
+                    e.target.style.color = 'var(--text-primary, rgba(255, 255, 255, 0.9))';
+                  } else {
+                    e.target.style.background = 'rgba(255, 152, 0, 0.25)';
+                    e.target.style.borderColor = 'rgba(255, 152, 0, 0.6)';
+                    e.target.style.color = '#ff9800';
+                  }
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
               >
-                {language === 'ar' ? 'العربية' : 'English'}
-                <FaAngleDown className={`quik-nav-arrow ${isLangOpen ? "open" : ""}`} />
-              </button>
-              <ul className="quik-lang-dropdown">
-                <li><button onClick={() => { changeLanguage('ar'); setIsLangOpen(false); }}>العربية</button></li>
-                <li><button onClick={() => { changeLanguage('en'); setIsLangOpen(false); }}>English</button></li>
-              </ul>
+                {t('nav.careers')}
+              </a>
+
+              {/* CTA Button */}
+              <a
+                href="/contact"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 20px',
+                  background: 'linear-gradient(135deg, #ff9800 0%, #e67e22 100%)',
+                  color: '#fff',
+                  borderRadius: '50px',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  fontFamily: "'Cairo', sans-serif",
+                  boxShadow: 'none',
+                  transition: 'all 0.3s ease',
+                  border: '2px solid transparent'
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'translateY(-2px)';
+                  e.target.style.boxShadow = 'none';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0)';
+                  e.target.style.boxShadow = 'none';
+                }}
+              >
+                {t('nav.contact')}
+              </a>
             </div>
 
-            {/* Careers Button - Styled like Language */}
-            <a
-              href="/careers"
-              className={`quik-careers-btn ${pathname === '/careers' ? 'active' : ''}`}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '10px 20px',
-                background: pathname === '/careers' ? 'rgba(255, 152, 0, 0.25)' : 'rgba(255, 152, 0, 0.1)',
-                border: pathname === '/careers' ? '1px solid rgba(255, 152, 0, 0.6)' : '1px solid rgba(255, 152, 0, 0.3)',
-                borderRadius: '50px',
-                fontSize: '14px',
-                fontWeight: 600,
-                color: pathname === '/careers' ? '#ff9800' : 'var(--text-primary, rgba(255, 255, 255, 0.9))',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = 'rgba(255, 152, 0, 0.2)';
-                e.target.style.borderColor = 'rgba(255, 152, 0, 0.5)';
-                e.target.style.color = '#ff9800';
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 8px 20px rgba(255, 152, 0, 0.2)';
-              }}
-              onMouseLeave={(e) => {
-                if (pathname !== '/careers') {
-                  e.target.style.background = 'rgba(255, 152, 0, 0.1)';
-                  e.target.style.borderColor = 'rgba(255, 152, 0, 0.3)';
-                  e.target.style.color = 'var(--text-primary, rgba(255, 255, 255, 0.9))';
-                } else {
-                  e.target.style.background = 'rgba(255, 152, 0, 0.25)';
-                  e.target.style.borderColor = 'rgba(255, 152, 0, 0.6)';
-                  e.target.style.color = '#ff9800';
-                }
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = 'none';
-              }}
+            {/* Mobile Menu Button */}
+            <button
+              className="quik-mobile-btn"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
             >
-              {t('nav.careers')}
-            </a>
-
-            {/* CTA Button */}
-            <a
-              href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '12px 28px',
-                background: 'linear-gradient(135deg, #ff9800 0%, #e67e22 100%)',
-                color: '#fff',
-                borderRadius: '50px',
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-                fontSize: '14px',
-                fontWeight: 700,
-                fontFamily: "'Cairo', sans-serif",
-                boxShadow: '0 8px 20px rgba(255, 152, 0, 0.3)',
-                transition: 'all 0.3s ease',
-                border: '2px solid transparent'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.transform = 'translateY(-2px)';
-                e.target.style.boxShadow = '0 12px 30px rgba(255, 152, 0, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.transform = 'translateY(0)';
-                e.target.style.boxShadow = '0 8px 20px rgba(255, 152, 0, 0.3)';
-              }}
-            >
-              {t('nav.contact')}
-            </a>
+              {menuOpen ? <FaTimes /> : <FaBars />}
+            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="quik-mobile-btn"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
         </div>
 
         {/* Mobile Overlay */}
@@ -579,24 +616,31 @@ const QuikNavbar = () => {
             <FaTimes />
           </button>
           <a href="/" className={`quik-mobile-link ${pathname === '/' ? 'active' : ''}`}>
+            <FaHome size={18} />
             {t('nav.home')}
           </a>
           <a href="/about" className={`quik-mobile-link ${pathname === '/about' ? 'active' : ''}`}>
+            <FaInfoCircle size={18} />
             {t('nav.about')}
           </a>
           <a href="/services" className={`quik-mobile-link ${pathname === '/services' ? 'active' : ''}`}>
+            <FaCogs size={18} />
             {t('nav.services')}
           </a>
           <a href="/partners" className={`quik-mobile-link ${pathname === '/partners' ? 'active' : ''}`}>
+            <FaHandshake size={18} />
             {t('nav.partners')}
           </a>
           <a href="/franchise" className={`quik-mobile-link ${pathname === '/franchise' ? 'active' : ''}`}>
+            <FaStore size={18} />
             {t('nav.franchise')}
           </a>
           <a href="/blog" className={`quik-mobile-link ${pathname === '/blog' ? 'active' : ''}`}>
+            <FaNewspaper size={18} />
             {t('nav.blog')}
           </a>
           <a href="/branches" className={`quik-mobile-link ${pathname === '/branches' ? 'active' : ''}`}>
+            <FaMapMarkerAlt size={18} />
             {t('nav.branches')}
           </a>
           <div className="quik-mobile-divider" />
@@ -617,10 +661,11 @@ const QuikNavbar = () => {
               margin: '5px 20px'
             }}
           >
-            <span style={{ marginLeft: '8px' }}>💼</span>
+            <FaBriefcase size={18} />
             {t('nav.careers')}
           </a>
           <a href="/contact" className="quik-mobile-link" style={{ marginTop: '10px' }}>
+            <FaPhoneAlt size={18} />
             {t('nav.contact')}
           </a>
           <div className="quik-mobile-divider" />

@@ -19,6 +19,7 @@
     "address": "Address",
     "phone": "Phone",
     "email": "Email",
-    "hours": "Working Hours"
+    "hours": "Working Hours",
+    "whatsapp": "WhatsApp"
   }
 }

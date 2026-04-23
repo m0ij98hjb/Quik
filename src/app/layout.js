@@ -37,7 +37,8 @@ export default async function RootLayout({ children }) {
     <html lang={savedLang} dir={dir} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         {/* Favicon */}
-        <link href="https://quikstations.com/uploads/img/general/1719503953-colored logo.png" sizes="128x128" rel="shortcut icon" />
+        <link rel="icon" type="image/png" href="/images/quik-logo.png.png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/images/quik-logo.png.png" sizes="192x192" />
 
         {/* Boostrap */}
         <link rel="stylesheet" href="https://quikstations.com/assets/frontend/vendor/css/bootstrap.min.css" />

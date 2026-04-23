@@ -68,12 +68,12 @@ export default function Footer() {
                         style={{
                           width: "45px",
                           height: "45px",
-                          background: "linear-gradient(135deg, rgba(255,152,0,0.2) 0%, rgba(255,152,0,0.1) 100%)",
+                          background: "rgba(255, 255, 255, 0.05)",
                           borderRadius: "12px",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          border: "1px solid rgba(255,152,0,0.3)",
+                          border: "1px solid rgba(255, 255, 255, 0.1)",
                           color: "#ff9800",
                           textDecoration: "none"
                         }}
@@ -156,14 +156,14 @@ export default function Footer() {
                   <div style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                       <div style={{
-                        width: "40px",
-                        height: "40px",
-                        background: "linear-gradient(135deg, rgba(255,152,0,0.2) 0%, rgba(255,152,0,0.1) 100%)",
-                        borderRadius: "10px",
+                        width: "45px",
+                        height: "45px",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        borderRadius: "12px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        border: "1px solid rgba(255,152,0,0.3)"
+                        border: "1px solid rgba(255, 255, 255, 0.1)"
                       }}>
                         <FaMapMarkerAlt style={{ color: "#ff9800", fontSize: "16px" }} />
                       </div>
@@ -174,14 +174,14 @@ export default function Footer() {
                     
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                       <div style={{
-                        width: "40px",
-                        height: "40px",
-                        background: "linear-gradient(135deg, rgba(255,152,0,0.2) 0%, rgba(255,152,0,0.1) 100%)",
-                        borderRadius: "10px",
+                        width: "45px",
+                        height: "45px",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        borderRadius: "12px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        border: "1px solid rgba(255,152,0,0.3)"
+                        border: "1px solid rgba(255, 255, 255, 0.1)"
                       }}>
                         <FaPhone style={{ color: "#ff9800", fontSize: "16px" }} />
                       </div>
@@ -192,14 +192,14 @@ export default function Footer() {
                     
                     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                       <div style={{
-                        width: "40px",
-                        height: "40px",
-                        background: "linear-gradient(135deg, rgba(255,152,0,0.2) 0%, rgba(255,152,0,0.1) 100%)",
-                        borderRadius: "10px",
+                        width: "45px",
+                        height: "45px",
+                        background: "rgba(255, 255, 255, 0.05)",
+                        borderRadius: "12px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        border: "1px solid rgba(255,152,0,0.3)"
+                        border: "1px solid rgba(255, 255, 255, 0.1)"
                       }}>
                         <FaEnvelope style={{ color: "#ff9800", fontSize: "16px" }} />
                       </div>
@@ -249,7 +249,7 @@ export default function Footer() {
           alignItems: "center",
           justifyContent: "center",
           color: "#fff",
-          boxShadow: "0 5px 20px rgba(255,152,0,0.4)",
+          boxShadow: "none",
           zIndex: 999,
           textDecoration: "none"
         }}
@@ -272,7 +272,7 @@ export default function Footer() {
           alignItems: "center",
           justifyContent: "center",
           color: "#fff",
-          boxShadow: "0 5px 20px rgba(255,152,0,0.4)",
+          boxShadow: "none",
           zIndex: 999,
           textDecoration: "none"
         }}

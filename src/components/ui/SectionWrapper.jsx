@@ -143,17 +143,7 @@ export function AnimatedCard({
         ...style
       }}
     >
-      {/* Hover Glow */}
-      {hoverEffect && (
-        <div style={{
-          position: "absolute",
-          top: 0, left: 0, right: 0, bottom: 0,
-          background: "radial-gradient(circle at center, rgba(255,152,0,0.1) 0%, transparent 70%)",
-          opacity: 0,
-          transition: "opacity 0.3s",
-          pointerEvents: "none"
-        }} className="hover-glow" />
-      )}
+      {/* Hover Glow - Removed */}
       {children}
     </motion.div>
   );
@@ -188,9 +178,6 @@ export function GlowOrb({
         right,
         width: size,
         height: size,
-        background: "radial-gradient(circle, rgba(255,152,0,0.4) 0%, transparent 70%)",
-        borderRadius: "50%",
-        filter: "blur(60px)",
         zIndex: 0
       }}
     />
@@ -213,7 +200,7 @@ export function PrimaryButton({
   return (
     <motion.a 
       href={href}
-      whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,152,0,0.5)" }}
+      whileHover={{ scale: 1.05, boxShadow: "none" }}
       whileTap={{ scale: 0.95 }}
       style={{ 
         display: "inline-flex", 
@@ -225,7 +212,7 @@ export function PrimaryButton({
         textDecoration: "none",
         fontWeight: 700,
         fontFamily: "'Cairo', sans-serif",
-        boxShadow: "0 10px 30px rgba(255,152,0,0.4)",
+        boxShadow: "none",
         border: "2px solid rgba(255,255,255,0.1)",
         ...sizes[size]
       }}
@@ -290,7 +277,7 @@ export function StepNumber({
         alignItems: "center",
         justifyContent: "center",
         border: active ? "2px solid #ff9800" : "2px solid rgba(255,152,0,0.3)",
-        boxShadow: active ? "0 0 30px rgba(255,152,0,0.4)" : "none"
+        boxShadow: "none"
       }}
     >
       <span style={{
@@ -360,8 +347,8 @@ export function BackgroundGlow() {
         transform: "translate(-50%, -50%)",
         width: "600px",
         height: "600px",
-        background: "radial-gradient(circle, rgba(255,152,0,0.3) 0%, transparent 70%)",
-        filter: "blur(80px)",
+        background: "transparent",
+        filter: "none",
         zIndex: 0
       }}
     />

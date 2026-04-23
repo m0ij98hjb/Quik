@@ -65,24 +65,7 @@ export default function BlogPage() {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Glow Orbs */}
-          <div style={{
-            position: 'absolute',
-            top: '10%',
-            right: '10%',
-            width: '300px', height: '300px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            zIndex: 0
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '10%', left: '10%',
-            width: '250px', height: '250px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            zIndex: 0
-          }} />
+          <div style={{ display: 'none' }} />
 
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <motion.div 
@@ -142,7 +125,7 @@ export default function BlogPage() {
                 gap: '50px',
                 flexWrap: 'wrap'
               }}>
-                {[{ num: '6+', label: language === 'ar' ? 'أخبار' : 'News' }, { num: '4', label: language === 'ar' ? 'فئات' : 'Categories' }, { num: '9', label: language === 'ar' ? 'محطات' : 'Stations' }].map((stat, i) => (
+                {[{ num: '6+', label: language === 'ar' ? 'أخبار' : 'News' }, { num: '4', label: language === 'ar' ? 'فئات' : 'Categories' }, { num: '33', label: language === 'ar' ? 'محطات' : 'Stations' }].map((stat, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -241,7 +224,8 @@ export default function BlogPage() {
                     <div style={{
                       position: 'absolute',
                       top: '15px',
-                      left: '15px',
+                      left: language === 'ar' ? '15px' : 'auto',
+                      right: language === 'ar' ? 'auto' : '15px',
                       fontSize: '48px',
                       fontWeight: 800,
                       color: 'rgba(255,152,0,0.1)',
@@ -263,7 +247,7 @@ export default function BlogPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '20px',
-                        boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       <FaNewspaper style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -320,21 +304,10 @@ export default function BlogPage() {
                       fontFamily: "'Cairo', sans-serif"
                     }}>
                       <FaArrowLeft size={12} style={{ transform: language === 'ar' ? 'none' : 'rotate(180deg)' }} />
-                      {t('blog.readmore')}
+                      {t('blog.readMore')}
                     </a>
 
-                    {/* Hover Glow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at 50% 100%, rgba(255,152,0,0.1) 0%, transparent 50%)',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                      pointerEvents: 'none'
-                    }} className="blog-card-glow" />
+                    {/* Hover Glow - Removed */}
                   </motion.div>
                 </motion.div>
               ))}
@@ -389,7 +362,7 @@ export default function BlogPage() {
                   fontSize: '16px',
                   fontWeight: 700,
                   fontFamily: "'Cairo', sans-serif",
-                  boxShadow: '0 10px 30px rgba(255,152,0,0.4)'
+                  boxShadow: 'none'
                 }}
               >
                 {language === 'ar' ? 'تواصل معنا' : 'Contact Us'}

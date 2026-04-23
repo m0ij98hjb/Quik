@@ -32,29 +32,20 @@ export default function VisionSection() {
     <section 
       id="vision"
       style={{ 
-        padding: "120px 0",
+        padding: "60px 0 120px 0",
         backgroundColor: "var(--bg-primary)",
         position: "relative",
         overflow: "hidden"
       }}
     >
-      {/* Background Glow */}
-      <div style={{
-        position: "absolute",
-        top: "-20%",
-        right: "-10%",
-        width: "600px",
-        height: "600px",
-        background: "radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)",
-        filter: "blur(80px)",
-        zIndex: 0
-      }} />
+      <div style={{ display: 'none' }} />
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <motion.div 
-          {...fadeInUp}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="800"
         >
           <span style={{
             display: "inline-block",
@@ -83,24 +74,27 @@ export default function VisionSection() {
               <><span style={{ color: "#ff9800" }}>Towards</span> a Better Future</>
             )}
           </h2>
-        </motion.div>
+        </div>
 
-        <div className="row">
+        <div className="row" dir={language === 'ar' ? 'rtl' : 'ltr'}>
           {/* Vision Card */}
           <div className="col-lg-6 mb-4 mb-lg-0">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+            <div
+              data-aos="fade-right"
+              data-aos-duration="800"
               style={{
-                padding: "50px 40px",
-                background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-                borderRadius: "25px",
-                border: "1px solid rgba(255,152,0,0.1)",
+                padding: "40px 30px",
+                background: "var(--bg-card)",
+                borderRadius: "20px",
+                border: "1px solid var(--border-color)",
+                boxShadow: "var(--shadow-md)",
                 height: "100%",
                 position: "relative",
-                overflow: "hidden"
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-start",
+                textAlign: "start"
               }}
             >
               {/* Icon */}
@@ -109,16 +103,16 @@ export default function VisionSection() {
                 style={{
                   width: "90px",
                   height: "90px",
-                  background: "linear-gradient(135deg, #ff9800 0%, #e67e22 100%)",
+                  background: "linear-gradient(135deg, rgba(255,152,0,0.2) 0%, rgba(255,152,0,0.1) 100%)",
                   borderRadius: "25px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   marginBottom: "30px",
-                  boxShadow: "0 20px 40px rgba(255,152,0,0.3)"
+                  border: "2px solid rgba(255,152,0,0.3)"
                 }}
               >
-                <FaEye style={{ fontSize: "40px", color: "var(--text-primary)" }} />
+                <FaEye style={{ fontSize: "40px", color: "#ff9800" }} />
               </motion.div>
 
               <h3 style={{
@@ -133,15 +127,16 @@ export default function VisionSection() {
 
               <div>
                 {visionPoints.map((point, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    data-aos="fade-left"
+                    data-aos-delay={index * 100}
+                    data-aos-duration="500"
                     style={{
                       display: "flex",
                       alignItems: "flex-start",
+                      justifyContent: "flex-start",
+                      textAlign: "start",
                       gap: "15px",
                       padding: "15px 0",
                       borderBottom: index < visionPoints.length - 1 ? "1px solid rgba(255,152,0,0.1)" : "none"
@@ -161,43 +156,34 @@ export default function VisionSection() {
                     }}>
                       {point}
                     </span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Mission Card */}
           <div className="col-lg-6">
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            <div
+              data-aos="fade-left"
+              data-aos-duration="800"
               style={{
-                padding: "50px 40px",
-                background: "linear-gradient(135deg, rgba(255,152,0,0.1) 0%, rgba(255,152,0,0.02) 100%)",
-                borderRadius: "25px",
-                border: "1px solid rgba(255,152,0,0.2)",
+                padding: "40px 30px",
+                background: "var(--bg-card)",
+                borderRadius: "20px",
+                border: "1px solid var(--border-color)",
+                boxShadow: "var(--shadow-md)",
                 height: "100%",
                 position: "relative",
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center"
+                justifyContent: "center",
+                alignItems: "flex-start",
+                textAlign: "start"
               }}
             >
-              {/* Accent Line */}
-              <div style={{
-                position: "absolute",
-                top: 0,
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "80px",
-                height: "4px",
-                background: "linear-gradient(90deg, transparent, #ff9800, transparent)",
-                borderRadius: "2px"
-              }} />
+
 
               {/* Icon */}
               <motion.div
@@ -231,8 +217,7 @@ export default function VisionSection() {
                 fontSize: "20px",
                 color: "var(--text-secondary)",
                 lineHeight: "2",
-                fontFamily: "'Cairo', sans-serif",
-                fontStyle: "italic"
+                fontFamily: "'Cairo', sans-serif"
               }}>
                 {language === 'ar'
                   ? '"نحو آفاق جديدة؛ وذلك عن طريق ابتكار واستحداث أفكار جديدة ومتميزة وغير مسبوقة في مجال محطات الوقود وخدمات السيارات"'
@@ -241,21 +226,21 @@ export default function VisionSection() {
 
               <div style={{
                 marginTop: "30px",
-                padding: "20px",
-                background: "var(--text-muted)",
-                borderRadius: "15px",
-                border: "1px solid var(--text-secondary)"
+                padding: "10px 25px",
+                background: "rgba(255,152,0,0.1)",
+                borderRadius: "30px",
+                border: "1px solid rgba(255,152,0,0.3)"
               }}>
                 <span style={{
-                  color: "var(--text-secondary)",
+                  color: "#ff9800",
                   fontWeight: 700,
                   fontFamily: "'Cairo', sans-serif",
                   fontSize: "16px"
                 }}>
-                  #نحو_آفاق_جديدة
+                  {language === 'ar' ? '#نحو_آفاق_جديدة' : '#Towards_New_Horizons'}
                 </span>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

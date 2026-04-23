@@ -78,23 +78,7 @@ export default function ServicesPage() {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Glow Orbs */}
-          <div style={{
-            position: 'absolute',
-            top: '10%', right: '10%',
-            width: '300px', height: '300px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            zIndex: 0
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '10%', left: '10%',
-            width: '250px', height: '250px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            zIndex: 0
-          }} />
+          <div style={{ display: 'none' }} />
 
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <motion.div 
@@ -149,7 +133,7 @@ export default function ServicesPage() {
                 gap: '50px',
                 flexWrap: 'wrap'
               }}>
-                {[{ num: '15+', label: language === 'ar' ? 'خدمة' : 'Services' }, { num: '24/7', label: language === 'ar' ? 'طوال اليوم' : 'All Day' }, { num: '9', label: language === 'ar' ? 'محطات' : 'Stations' }].map((stat, i) => (
+                {[{ num: '15+', label: language === 'ar' ? 'خدمة' : 'Services' }, { num: '24/7', label: language === 'ar' ? 'طوال اليوم' : 'All Day' }, { num: '33', label: language === 'ar' ? 'محطات' : 'Stations' }].map((stat, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -160,7 +144,7 @@ export default function ServicesPage() {
                     <div style={{ 
                       fontSize: '36px', 
                       fontWeight: 800, 
-                      color: 'var(--text-secondary)',
+                      color: '#ff9800',
                       fontFamily: "'Cairo', sans-serif"
                     }}>{stat.num}</div>
                     <div style={{ 
@@ -240,7 +224,11 @@ export default function ServicesPage() {
                       border: '1px solid rgba(255,152,0,0.15)',
                       height: '100%',
                       position: 'relative',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center'
                     }}
                   >
                     {/* Number Badge */}
@@ -269,7 +257,7 @@ export default function ServicesPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '20px',
-                        boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       <service.icon style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -311,18 +299,7 @@ export default function ServicesPage() {
                       {language === 'ar' ? 'قراءة المزيد' : 'Read More'}
                     </a>
 
-                    {/* Hover Glow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at 50% 100%, rgba(255,152,0,0.1) 0%, transparent 50%)',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                      pointerEvents: 'none'
-                    }} className="service-card-glow" />
+                    {/* Hover Glow - Removed */}
                   </motion.div>
                 </motion.div>
               ))}
@@ -377,7 +354,7 @@ export default function ServicesPage() {
                   fontSize: '16px',
                   fontWeight: 700,
                   fontFamily: "'Cairo', sans-serif",
-                  boxShadow: '0 10px 30px rgba(255,152,0,0.4)'
+                  boxShadow: 'none'
                 }}
               >
                 {language === 'ar' ? 'تواصل معنا' : 'Contact Us'}

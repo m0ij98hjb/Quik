@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight, FaArrowLeft, FaArrowDown } from "react-icons/fa";
 import { useLanguage } from "../../../../contexts/LanguageContext";
+import { useLoading } from "../../../../contexts/LoadingContext";
 
 const heroImages = [
   "/images/hero.png",
@@ -16,6 +17,7 @@ export default function HeroSection() {
   const typedInstanceRef = useRef(null);
   const [currentImage, setCurrentImage] = useState(0);
   const { language, t } = useLanguage();
+  const { isLoading } = useLoading();
 
   useEffect(() => {
     const initTyped = () => {
@@ -118,43 +120,13 @@ export default function HeroSection() {
         zIndex: 2
       }} />
 
-      {/* Animated Glow Orbs */}
-      <motion.div
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          position: "absolute",
-          top: "20%",
-          right: "10%",
-          width: "500px",
-          height: "500px",
-          background: "radial-gradient(circle, rgba(255,152,0,0.4) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(80px)",
-          zIndex: 3
-        }}
-      />
-      <motion.div
-        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "5%",
-          width: "400px",
-          height: "400px",
-          background: "radial-gradient(circle, rgba(255,152,0,0.3) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(60px)",
-          zIndex: 3
-        }}
-      />
-
-      {/* Image Navigation Arrows */}
+      {/* Background Grid Pattern */}
       <motion.button
         onClick={prevImage}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        data-aos="fade-right"
+        data-aos-duration="600"
         style={{
           position: "absolute",
           left: "30px",
@@ -180,6 +152,8 @@ export default function HeroSection() {
         onClick={nextImage}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        data-aos="fade-left"
+        data-aos-duration="600"
         style={{
           position: "absolute",
           right: "30px",
@@ -202,7 +176,11 @@ export default function HeroSection() {
       </motion.button>
 
       {/* Image Dots */}
-      <div style={{
+      <div
+        data-aos="fade-up"
+        data-aos-duration="600"
+        data-aos-delay="200"
+        style={{
         position: "absolute",
         bottom: "100px",
         left: "50%",
@@ -233,9 +211,9 @@ export default function HeroSection() {
         <div className="row justify-content-center">
           <div className="col-lg-10 text-center">
             <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={!isLoading ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.9 }}
+              transition={{ duration: 0.8, delay: isLoading ? 0 : 0.3, type: "spring", stiffness: 100 }}
               style={{
                 display: "inline-block",
                 padding: "8px 24px",
@@ -253,37 +231,62 @@ export default function HeroSection() {
             </motion.span>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={!isLoading ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 1, delay: isLoading ? 0 : 0.5, type: "spring", stiffness: 80 }}
               style={{
                 fontSize: "clamp(36px, 8vw, 80px)",
                 fontWeight: 800,
-                color: "var(--text-primary)",
+                color: "#ffffff",
                 marginBottom: "20px",
-                fontFamily: "'Cairo', sans-serif",
-                textShadow: "0 0 60px rgba(255,152,0,0.3)"
+                fontFamily: "'Cairo', sans-serif"
               }}
             >
               {language === 'ar' ? (
                 <>
-                  شركة كويك
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8, delay: isLoading ? 0 : 0.7 }}
+                  >
+                    شركة كويك
+                  </motion.span>
                   <br />
-                  <span style={{ color: "#ff9800" }}>لمحطات الوقود</span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8, delay: isLoading ? 0 : 0.9 }}
+                    style={{ color: "#ff9800" }}
+                  >
+                    لمحطات الوقود
+                  </motion.span>
                 </>
               ) : (
                 <>
-                  Quik Company
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8, delay: isLoading ? 0 : 0.7 }}
+                  >
+                    Quik Company
+                  </motion.span>
                   <br />
-                  <span style={{ color: "#ff9800" }}>Fuel Stations</span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={!isLoading ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8, delay: isLoading ? 0 : 0.9 }}
+                    style={{ color: "#ff9800" }}
+                  >
+                    Fuel Stations
+                  </motion.span>
                 </>
               )}
             </motion.h1>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={!isLoading ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
+              transition={{ duration: 0.8, delay: isLoading ? 0 : 1.1, type: "spring", stiffness: 70 }}
               style={{ 
                 fontSize: "24px",
                 color: "rgba(255,255,255,0.8)",
@@ -296,25 +299,25 @@ export default function HeroSection() {
             </motion.div>
 
             <motion.a
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              initial={{ opacity: 0, y: 30, scale: 0.8 }}
+              animate={!isLoading ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.8 }}
+              transition={{ duration: 0.8, delay: isLoading ? 0 : 1.3, type: "spring", stiffness: 90 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="/contact"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: "12px",
-                padding: "18px 50px",
+                gap: "10px",
+                padding: "12px 35px",
                 background: "linear-gradient(135deg, #ff9800 0%, #e67e22 100%)",
                 color: "var(--text-primary)",
                 borderRadius: "50px",
                 textDecoration: "none",
                 fontWeight: 700,
                 fontFamily: "'Cairo', sans-serif",
-                fontSize: "18px",
-                boxShadow: "0 10px 40px rgba(255,152,0,0.4)",
+                fontSize: "16px",
+                boxShadow: "none",
                 border: "2px solid var(--border-color)"
               }}
             >
@@ -326,31 +329,33 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        style={{
-          position: "absolute",
-          bottom: "40px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 10
-        }}
-      >
-        <a href="#about" style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "10px",
-          color: "rgba(255,255,255,0.5)",
-          textDecoration: "none",
-          fontFamily: "'Cairo', sans-serif",
-          fontSize: "14px"
-        }}>
-          <span>اكتشف المزيد</span>
-          <FaArrowDown style={{ color: "#ff9800" }} />
-        </a>
-      </motion.div>
+      <div style={{
+        position: "absolute",
+        bottom: "50px",
+        left: "50%",
+        transform: "translateX(-50%)",
+        zIndex: 10
+      }}>
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <a href="#about" style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "8px",
+            color: "rgba(255,255,255,0.7)",
+            textDecoration: "none",
+            fontFamily: "'Cairo', sans-serif",
+            fontSize: "14px",
+            fontWeight: 600
+          }}>
+            <span>{language === 'ar' ? 'اكتشف المزيد' : 'Discover More'}</span>
+            <FaArrowDown style={{ color: "#ff9800", fontSize: "16px" }} />
+          </a>
+        </motion.div>
+      </div>
     </section>
   );
 }

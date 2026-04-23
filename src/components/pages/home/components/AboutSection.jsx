@@ -34,27 +34,15 @@ export default function AboutSection() {
         zIndex: 0
       }} />
 
-      {/* Glow Effect */}
-      <div style={{
-        position: "absolute",
-        top: "50%",
-        left: "-10%",
-        width: "500px",
-        height: "500px",
-        background: "radial-gradient(circle, rgba(255,152,0,0.15) 0%, transparent 70%)",
-        filter: "blur(80px)",
-        zIndex: 0
-      }} />
+      <div style={{ display: 'none' }} />
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div className="row align-items-center">
           {/* Image Side */}
           <div className="col-lg-6 mb-5 mb-lg-0" style={{ paddingLeft: "30px" }}>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+            <div
+              data-aos="fade-right"
+              data-aos-duration="800"
               style={{ position: "relative" }}
             >
               <div style={{
@@ -77,12 +65,16 @@ export default function AboutSection() {
                 }} />
               </div>
 
-            </motion.div>
+            </div>
           </div>
 
           {/* Content Side */}
           <div className="col-lg-6">
-            <motion.div {...fadeInUp}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="800"
+              data-aos-delay="200"
+            >
               <span style={{
                 display: "inline-block",
                 padding: "8px 20px",
@@ -137,12 +129,11 @@ export default function AboutSection() {
                   "Latest methods and technologies",
                   "24/7 customer service"
                 ]).map((item, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
+                    data-aos="fade-left"
+                    data-aos-delay={index * 100}
+                    data-aos-duration="500"
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -172,7 +163,7 @@ export default function AboutSection() {
                     }}>
                       {item}
                     </span>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
 
@@ -193,13 +184,13 @@ export default function AboutSection() {
                   fontWeight: 600,
                   fontFamily: "'Cairo', sans-serif",
                   fontSize: "16px",
-                  boxShadow: "0 10px 30px rgba(255,152,0,0.3)"
+                  boxShadow: "none"
                 }}
               >
                 <FaDownload />
-                تنزيل بروفايل الشركة
+                {language === 'ar' ? 'تنزيل بروفايل الشركة' : 'Download Company Profile'}
               </motion.a>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

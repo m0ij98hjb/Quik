@@ -79,7 +79,7 @@ export default function BlogSection() {
     <section 
       id="blog"
       style={{ 
-        padding: "120px 0",
+        padding: "60px 0 120px 0",
         backgroundColor: "var(--bg-primary)",
         position: "relative",
         overflow: "hidden"
@@ -109,18 +109,13 @@ export default function BlogSection() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="800"
         >
           <motion.div
-            initial={{ scale: 0.8 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.05 }}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -165,18 +160,17 @@ export default function BlogSection() {
               ? 'تابعونا لمعرفة آخر مستجدات وأخبار شركة كويك لمحطات الوقود'
               : 'Follow us to know the latest updates and news from Quik Fuel Stations Company'}
           </p>
-        </motion.div>
+        </div>
 
         {/* Blog Grid */}
         <div className="row">
           {blogs.map((blog, index) => (
-            <motion.div
+            <div
               key={index}
               className="col-lg-3 col-md-6 mb-4"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              data-aos-duration="600"
             >
               <motion.div
                 whileHover={{ y: -10 }}
@@ -298,7 +292,7 @@ export default function BlogSection() {
                       marginTop: "auto"
                     }}
                   >
-                    {t('blog.readmore')}
+                    {t('blog.readMore')}
                     <motion.span
                       initial={{ x: 0 }}
                       whileHover={{ x: language === 'ar' ? -5 : 5 }}
@@ -308,17 +302,16 @@ export default function BlogSection() {
                   </motion.a>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* View All Button */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.6 }}
+        <div
           className="text-center mt-4"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="400"
         >
           <motion.a
             href="/blog"
@@ -343,7 +336,7 @@ export default function BlogSection() {
             <FaNewspaper />
             {language === 'ar' ? 'عرض جميع الأخبار' : 'View All News'}
           </motion.a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

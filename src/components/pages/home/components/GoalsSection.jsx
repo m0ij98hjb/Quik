@@ -45,12 +45,10 @@ export default function GoalsSection() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="800"
         >
           <span style={{
             display: "inline-block",
@@ -79,18 +77,17 @@ export default function GoalsSection() {
               <><span style={{ color: "#ff9800" }}>Our</span> Strategic Goals</>
             )}
           </h2>
-        </motion.div>
+        </div>
 
         {/* Goals Grid */}
         <div className="row">
           {goals.map((goal, index) => (
-            <motion.div
+            <div
               key={index}
               className="col-lg-6 mb-4"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              data-aos-duration="600"
             >
               <motion.div
                 whileHover={{ y: -5, transition: { duration: 0.3 } }}
@@ -117,7 +114,7 @@ export default function GoalsSection() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    boxShadow: "0 10px 30px rgba(255,152,0,0.3)"
+                    boxShadow: "none"
                   }}
                 >
                   <goal.icon style={{ fontSize: "28px", color: "var(--text-primary)" }} />
@@ -145,7 +142,7 @@ export default function GoalsSection() {
                   </p>
                 </div>
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -77,20 +77,12 @@ export default function PartnersPage() {
       <main style={{ backgroundColor: 'var(--bg-primary)', minHeight: '100vh' }}>
         {/* Hero Section */}
         <section style={{ 
-          padding: '100px 0 60px', 
+          padding: '160px 0 60px', 
           background: 'linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%)',
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Glow Orbs */}
-          <div style={{
-            position: 'absolute',
-            top: '10%', right: '10%',
-            width: '300px', height: '300px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            zIndex: 0
-          }} />
+          <div style={{ display: 'none' }} />
 
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <motion.div 
@@ -154,7 +146,7 @@ export default function PartnersPage() {
                 flexWrap: 'wrap',
                 marginTop: '40px'
               }}>
-                {[{ num: '12+', label: language === 'ar' ? 'شريك' : 'Partners' }, { num: '5', label: language === 'ar' ? 'فئات' : 'Categories' }, { num: '9', label: language === 'ar' ? 'محطات' : 'Stations' }].map((stat, i) => (
+                {[{ num: '12+', label: language === 'ar' ? 'شريك' : 'Partners' }, { num: '5', label: language === 'ar' ? 'فئات' : 'Categories' }, { num: '33', label: language === 'ar' ? 'محطات' : 'Stations' }].map((stat, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
@@ -230,9 +222,7 @@ export default function PartnersPage() {
                       fontWeight: 600,
                       fontFamily: "'Cairo', sans-serif",
                       transition: "all 0.3s ease",
-                      boxShadow: activeFilter === category 
-                        ? "0 10px 30px rgba(255,152,0,0.3)" 
-                        : "none"
+                      boxShadow: "none"
                     }}
                   >
                     {category}
@@ -271,18 +261,7 @@ export default function PartnersPage() {
                       boxShadow: "var(--shadow-md)"
                     }}
                   >
-                    {/* Orange Glow Effect */}
-                    <div style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      width: "150px",
-                      height: "150px",
-                      background: "radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)",
-                      filter: "blur(30px)",
-                      zIndex: 0
-                    }} />
+                    {/* Orange Glow Effect - Removed */}
 
                     <img
                       src={`https://quikstations.com/uploads/img/portfolio/${partner.img}`}
@@ -390,7 +369,7 @@ export default function PartnersPage() {
                   fontSize: '16px',
                   fontWeight: 700,
                   fontFamily: "'Cairo', sans-serif",
-                  boxShadow: '0 10px 30px rgba(255,152,0,0.4)'
+                  boxShadow: 'none'
                 }}
               >
                 {language === 'ar' ? 'تواصل معنا للشراكة' : 'Contact Us for Partnership'}

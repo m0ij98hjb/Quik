@@ -58,19 +58,22 @@ export default function BranchesPage() {
     window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
 
     function createMarkerIcon(active) {
-      const size = active ? 44 : 34;
-      const inner = active ? 14 : 11;
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const bgColor = isDark ? '#fff' : '#F79F1F';
-      const innerColor = isDark ? '#F79F1F' : '#fff';
-      const shadow = active
-        ? `0 0 0 7px ${isDark ? 'rgba(255,255,255,0.25)' : 'rgba(247, 159, 31, 0.25)'}, 0 4px 16px ${isDark ? 'rgba(255,255,255,0.5)' : 'rgba(247, 159, 31, 0.6)'}`
-        : `0 4px 12px ${isDark ? 'rgba(255,255,255,0.4)' : 'rgba(247, 159, 31, 0.5)'}`;
+      const size = active ? 52 : 40;
       return window.L.divIcon({
-        html: `<div style="width:${size}px;height:${size}px;background:${bgColor};border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid ${isDark ? '#F79F1F' : '#fff'};box-shadow:${shadow};"><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:${inner}px;height:${inner}px;background:${innerColor};border-radius:50%;"></div></div>`,
+        html: `<div style="
+          width:${size}px;
+          height:${size}px;
+          background: none;
+          border: none;
+          transform: ${active ? 'scale(1.15)' : 'scale(1)'};
+          transition: all 0.3s ease;
+        ">
+          <img src="/images/arrow.png" style="width:100%;height:100%;object-fit:contain;" />
+        </div>`,
         iconSize: [size, size],
         iconAnchor: [size / 2, size],
-        popupAnchor: [0, -size - 10]
+        popupAnchor: [0, -size - 5],
+        className: ''
       });
     }
 
@@ -86,19 +89,21 @@ export default function BranchesPage() {
       };
 
       marker.bindPopup(`
-      <div class="pop-head d-flex flex-column align-items-center justify-content-center p-3 text-center border-bottom">
-        <i class="fas fa-gas-pump fa-2x mb-2" style="color: var(--main-orange);"></i>
-        <h4 class="mb-2 fw-bold">${b.name}</h4>
-        <span style="background:${statusColors[b.status] || '#666'}; color:#fff; padding:4px 12px; border-radius:12px; font-size:12px; font-weight:600;">
-          ${b.status}
-        </span>
-      </div>
-      <div class="p-3 text-end" style="direction: rtl;">
-        <p class="mb-2"><i class="fas fa-map-marker-alt ms-2 text-muted"></i> <strong>العنوان:</strong> ${b.address}</p>
-        <p class="mb-0"><i class="fas fa-layer-group ms-2 text-muted"></i> <strong>المنطقة:</strong> ${b.region}</p>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lng}" target="_blank" class="pop-btn btn d-block text-center mt-3 py-2" style="background: var(--main-orange); color: #fff; border-radius: 8px;">
-          <i class="fas fa-directions"></i> احصل على الاتجاهات
-        </a>
+      <div style="font-family: 'Cairo', sans-serif; min-width: 220px;">
+        <div class="pop-head d-flex flex-column align-items-center justify-content-center p-3 text-center border-bottom">
+          <i class="fas fa-gas-pump fa-2x mb-2" style="color: var(--main-orange);"></i>
+          <h4 class="mb-2 fw-bold" style="font-family: 'Cairo', sans-serif;">${b.name}</h4>
+          <span style="background:${statusColors[b.status] || '#666'}; color:#fff; padding:4px 12px; border-radius:12px; font-size:12px; font-weight:600; font-family: 'Cairo', sans-serif;">
+            ${b.status}
+          </span>
+        </div>
+        <div class="p-3 text-end" style="direction: rtl; font-family: 'Cairo', sans-serif;">
+          <p class="mb-2"><i class="fas fa-map-marker-alt ms-2 text-muted"></i> <strong>العنوان:</strong> ${b.address}</p>
+          <p class="mb-0"><i class="fas fa-layer-group ms-2 text-muted"></i> <strong>المنطقة:</strong> ${b.region}</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${b.lat},${b.lng}" target="_blank" class="pop-btn btn d-block text-center mt-3 py-2" style="background: var(--main-orange); color: #fff; border-radius: 8px; font-family: 'Cairo', sans-serif;">
+            <i class="fas fa-directions"></i> احصل على الاتجاهات
+          </a>
+        </div>
       </div>
     `);
       marker.on('click', () => selectBranch(b.id, false));
@@ -141,16 +146,16 @@ export default function BranchesPage() {
 
       const filtered = query.trim() === '' ? branches : branches.filter(b => b.name.includes(query) || b.region.includes(query));
       document.getElementById('branchesList').innerHTML = filtered.map(b => `
-      <div class="branch-card d-flex align-items-center gap-3 px-4 py-3 border-bottom ${activeId === b.id ? 'active' : ''}" id="bi-${b.id}" onclick="selectBranch(${b.id}, true)">
-        <div class="bc-icon"><i class="fas fa-gas-pump"></i></div>
+      <div class="branch-card d-flex align-items-center gap-2 px-3 py-2 border-bottom ${activeId === b.id ? 'active' : ''}" id="bi-${b.id}" onclick="selectBranch(${b.id}, true)" style="cursor: pointer;">
+        <div class="bc-icon" style="font-size: 14px;"><i class="fas fa-gas-pump"></i></div>
         <div class="flex-grow-1">
-          <h5 class="mb-1">${b.name}</h5>
+          <h6 class="mb-1 fw-bold" style="font-size: 15px;">${b.name}</h6>
           <div class="d-flex align-items-center gap-2">
-            <small class="text-muted"><i class="fas fa-location-dot"></i> ${b.region}</small>
-            <span style="font-size: 10px; background: ${statusColors[b.status] || '#666'}; color: var(--text-primary); padding: 1px 6px; border-radius: 4px;">${b.status}</span>
+            <small class="text-muted" style="font-size: 12px;"><i class="fas fa-location-dot"></i> ${b.region}</small>
+            <span style="font-size: 9px; background: ${statusColors[b.status] || '#666'}; color: var(--text-primary); padding: 1px 5px; border-radius: 4px;">${b.status}</span>
           </div>
         </div>
-        <i class="fas fa-chevron-left"></i>
+        <i class="fas fa-chevron-left" style="font-size: 12px;"></i>
       </div>
     `).join('');
     }
@@ -202,7 +207,7 @@ export default function BranchesPage() {
                       className="form-control"
                       placeholder={language === 'ar' ? 'ابحث عن فرع...' : 'Search for a branch...'}
                     />
-                    <i className="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+                    <i className="fas fa-search position-absolute top-50 translate-middle-y text-muted" style={{ left: '15px' }}></i>
                   </div>
                 </div>
                 <div className="branches-list overflow-auto" id="branchesList" style={{maxHeight: '520px'}}></div>

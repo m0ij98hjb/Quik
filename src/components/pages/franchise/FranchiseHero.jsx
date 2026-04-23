@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../../contexts/LanguageContext";
+import { FaBriefcase } from "react-icons/fa";
 
 export default function FranchiseHero() {
   const sectionRef = useRef(null);
@@ -89,52 +90,7 @@ export default function FranchiseHero() {
         }}
       />
 
-      {/* Animated Orange Glow Orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-        style={{
-          position: "absolute",
-          top: "20%",
-          right: "10%",
-          width: "400px",
-          height: "400px",
-          background: "radial-gradient(circle, rgba(255,152,0,0.4) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(60px)",
-          zIndex: 1
-        }}
-      />
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-        style={{
-          position: "absolute",
-          bottom: "10%",
-          left: "5%",
-          width: "300px",
-          height: "300px",
-          background: "radial-gradient(circle, rgba(255,152,0,0.3) 0%, transparent 70%)",
-          borderRadius: "50%",
-          filter: "blur(50px)",
-          zIndex: 1
-        }}
-      />
+      {/* Main Content Container */}
 
       {/* Main Content Container */}
       <div 
@@ -157,7 +113,7 @@ export default function FranchiseHero() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "120px 20px 60px",
+            padding: "180px 20px 60px",
             position: "relative"
           }}
         >
@@ -174,22 +130,23 @@ export default function FranchiseHero() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               style={{
-                display: "inline-block",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "10px",
                 padding: "8px 24px",
-                background: "linear-gradient(135deg, #ff9800 0%, #e67e22 100%)",
+                background: "rgba(255,152,0,0.1)",
+                border: "1px solid rgba(255,152,0,0.3)",
                 borderRadius: "30px",
-                marginBottom: "30px"
-              }}
-            >
-              <span style={{
-                color: "var(--text-primary)",
+                marginBottom: "30px",
+                color: "#ff9800",
                 fontSize: "14px",
                 fontWeight: 600,
                 fontFamily: "'Cairo', sans-serif",
                 letterSpacing: "2px",
-              }}>
-                {language === 'ar' ? 'برنامج الامتياز التجاري' : 'Franchise Program'}
-              </span>
+              }}
+            >
+              <FaBriefcase />
+              {language === 'ar' ? 'برنامج الامتياز التجاري' : 'Franchise Program'}
             </motion.div>
 
             {/* Main Title */}
@@ -204,7 +161,6 @@ export default function FranchiseHero() {
                 marginBottom: "30px",
                 fontFamily: "'Cairo', sans-serif",
                 lineHeight: "1.2",
-                textShadow: "0 0 40px rgba(255,152,0,0.3)",
                 minHeight: "120px",
                 position: "relative",
                 display: "flex",
@@ -246,15 +202,15 @@ export default function FranchiseHero() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "12px",
-                padding: "18px 50px",
+                padding: "14px 40px",
                 background: "linear-gradient(135deg, #ff9800 0%, #e67e22 100%)",
                 color: "var(--text-primary)",
                 borderRadius: "50px",
                 textDecoration: "none",
                 fontWeight: 700,
                 fontFamily: "'Cairo', sans-serif",
-                fontSize: "18px",
-                boxShadow: "0 10px 40px rgba(255,152,0,0.4)",
+                fontSize: "16px",
+                boxShadow: "none",
                 border: "2px solid var(--border-color)",
                 cursor: "pointer"
               }}
@@ -283,9 +239,11 @@ export default function FranchiseHero() {
           <div
             style={{
               position: "relative",
-              borderRadius: "20px 20px 0 0",
+              borderRadius: "30px 30px 0 0",
               overflow: "hidden",
-              boxShadow: "0 -20px 60px rgba(255,152,0,0.2)"
+              boxShadow: "none",
+              border: "1px solid rgba(255, 152, 0, 0.3)",
+              borderBottom: "none"
             }}
           >
             <img

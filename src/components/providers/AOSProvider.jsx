@@ -7,11 +7,13 @@ import "aos/dist/aos.css";
 const AOSProvider = ({ children }) => {
   useEffect(() => {
     AOS.init({
-      duration: 1000,
+      duration: 800,
       once: true,
-      easing: "ease-out-quad",
-      delay: 50,
-      offset: 120,
+      easing: "ease-out-cubic",
+      delay: 0,
+      offset: 100,
+      mirror: false,
+      anchorPlacement: "top-bottom",
     });
   }, []);
 

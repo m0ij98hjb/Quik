@@ -22,11 +22,11 @@ const benefits = [
 const jobOpenings = [
   { 
     id: '01', 
-    title: 'محاضر', titleEn: 'Accountant',
-    department: 'المالية', departmentEn: 'Finance',
+    title: 'مهندس IT', titleEn: 'IT Engineer',
+    department: 'تقنية المعلومات', departmentEn: 'Information Technology',
     location: 'أبها', locationEn: 'Abha',
     type: 'دوام كامل', typeEn: 'Full Time',
-    description: 'نبحث عن محاسب ذو خبرة لإدارة الحسابات والتقارير المالية', descriptionEn: 'We are looking for an experienced accountant to manage accounts and financial reports'
+    description: 'مهندس تقنية معلومات لإدارة الشبكات والأنظمة التقنية', descriptionEn: 'IT Engineer to manage networks and technical systems'
   },
   { 
     id: '02', 
@@ -62,11 +62,11 @@ const jobOpenings = [
   },
   { 
     id: '06', 
-    title: 'مشرف مخزن', titleEn: 'Warehouse Supervisor',
-    department: 'المشتريات', departmentEn: 'Procurement',
-    location: 'خميس مشيط', locationEn: 'Khamis Mushait',
+    title: 'محاسب', titleEn: 'Accountant',
+    department: 'المالية', departmentEn: 'Finance',
+    location: 'أبها', locationEn: 'Abha',
     type: 'دوام كامل', typeEn: 'Full Time',
-    description: 'مشرف لإدارة المخزون والعمليات اللوجستية', descriptionEn: 'Supervisor to manage inventory and logistics operations'
+    description: 'نبحث عن محاسب ذو خبرة لإدارة الحسابات والتقارير المالية', descriptionEn: 'We are looking for an experienced accountant to manage accounts and financial reports'
   },
 ];
 
@@ -118,23 +118,7 @@ export default function CareersPage() {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Glow Orbs */}
-          <div style={{
-            position: 'absolute',
-            top: '10%', right: '10%',
-            width: '300px', height: '300px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            zIndex: 0
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '10%', left: '10%',
-            width: '250px', height: '250px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            zIndex: 0
-          }} />
+          <div style={{ display: 'none' }} />
 
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <motion.div 
@@ -312,7 +296,7 @@ export default function CareersPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '20px',
-                        boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       <benefit.icon style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -339,18 +323,7 @@ export default function CareersPage() {
                       {language === 'ar' ? benefit.description : benefit.descriptionEn}
                     </p>
 
-                    {/* Hover Glow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at 50% 100%, rgba(255,152,0,0.1) 0%, transparent 50%)',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                      pointerEvents: 'none'
-                    }} className="benefit-card-glow" />
+                    {/* Hover Glow - Removed */}
                   </motion.div>
                 </motion.div>
               ))}
@@ -440,7 +413,7 @@ export default function CareersPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '20px',
-                        boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       <FaBriefcase style={{ fontSize: '24px', color: 'var(--text-primary)' }} />
@@ -531,25 +504,14 @@ export default function CareersPage() {
                         fontSize: '14px',
                         fontWeight: 700,
                         fontFamily: "'Cairo', sans-serif",
-                        boxShadow: '0 8px 20px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       {language === 'ar' ? 'التقديم على الوظيفة' : 'Apply Now'}
                       <FaArrowLeft size={12} style={{ transform: language === 'ar' ? 'none' : 'rotate(180deg)' }} />
                     </motion.button>
 
-                    {/* Hover Glow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at 50% 100%, rgba(255,152,0,0.1) 0%, transparent 50%)',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                      pointerEvents: 'none'
-                    }} className="job-card-glow" />
+                    {/* Hover Glow - Removed */}
                   </motion.div>
                 </motion.div>
               ))}
@@ -604,7 +566,7 @@ export default function CareersPage() {
                   fontSize: '16px',
                   fontWeight: 700,
                   fontFamily: "'Cairo', sans-serif",
-                  boxShadow: '0 10px 30px rgba(255,152,0,0.4)'
+                  boxShadow: 'none'
                 }}
               >
                 {language === 'ar' ? 'إرسال السيرة الذاتية' : 'Send CV'}

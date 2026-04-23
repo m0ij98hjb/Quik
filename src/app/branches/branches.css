@@ -5,6 +5,26 @@
     --main-orange: #F79F1F;
 }
 
+/* Apply Cairo font to text elements only - exclude <i> to preserve Font Awesome icons */
+.branches-section h1, .branches-section h2, .branches-section h3,
+.branches-section h4, .branches-section h5, .branches-section h6,
+.branches-section p, .branches-section span, .branches-section a,
+.branches-section button, .branches-section input, .branches-section label,
+.branches-section div,
+.map-sidebar h1, .map-sidebar h2, .map-sidebar h3,
+.map-sidebar h4, .map-sidebar h5, .map-sidebar h6,
+.map-sidebar p, .map-sidebar span, .map-sidebar a, .map-sidebar div,
+.sidebar-top, .sidebar-top h3, .sidebar-top p,
+.branch-card h5, .branch-card p, .branch-card span,
+.section-heading h2, .section-heading p, .section-heading span,
+.leaflet-popup-content-wrapper h4,
+.leaflet-popup-content-wrapper p,
+.leaflet-popup-content-wrapper span,
+.leaflet-popup-content-wrapper a,
+.leaflet-popup-content-wrapper div {
+    font-family: 'Cairo', sans-serif !important;
+}
+
 .branches-section {
     padding: 80px 20px;
     background: rgba(247, 159, 31, 0.05);
@@ -62,23 +82,26 @@
 }
 
 .sidebar-top h3 {
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
     margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .sidebar-top h3 i {
-    margin-left: 10px;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0;
 }
 
 [dir="rtl"] .sidebar-top h3 i {
-    margin-left: 0;
-    margin-right: 10px;
+    margin: 0;
 }
 
 [dir="ltr"] .sidebar-top h3 i {
-    margin-left: 10px;
-    margin-right: 0;
+    margin: 0;
 }
 
 .sidebar-top p {
@@ -154,20 +177,11 @@
 }
 
 #branchSearch {
-    padding-right: 45px;
+    padding-left: 45px;
+    padding-right: 12px;
     transition: all 0.3s ease;
     font-size: 13px;
     height: 38px;
-}
-
-[dir="rtl"] #branchSearch {
-    padding-left: 45px;
-    padding-right: 12px;
-}
-
-[dir="ltr"] #branchSearch {
-    padding-right: 45px;
-    padding-left: 12px;
 }
 
 #branchSearch:focus {

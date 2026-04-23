@@ -69,7 +69,7 @@ export default function ServicesSection() {
     <section 
       id="services"
       style={{ 
-        padding: "120px 0",
+        padding: "120px 0 60px 0",
         backgroundColor: "var(--bg-primary)",
         position: "relative",
         overflow: "hidden"
@@ -85,9 +85,10 @@ export default function ServicesSection() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <motion.div 
-          {...fadeInUp}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="800"
         >
           <span style={{
             display: "inline-block",
@@ -127,18 +128,17 @@ export default function ServicesSection() {
               ? 'نقدم مجموعة متكاملة من الخدمات عالية الجودة لضمان راحتك ورفاهيتك'
               : 'We offer a complete set of high-quality services to ensure your comfort and well-being'}
           </p>
-        </motion.div>
+        </div>
 
         {/* Services Grid */}
         <div className="row">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
               className="col-lg-4 col-md-6 mb-4"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.5 }}
+              data-aos="fade-up"
+              data-aos-delay={index * 50}
+              data-aos-duration="600"
             >
               <motion.div
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
@@ -150,7 +150,11 @@ export default function ServicesSection() {
                   height: "100%",
                   position: "relative",
                   overflow: "hidden",
-                  boxShadow: "var(--shadow-md)"
+                  boxShadow: "var(--shadow-md)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center"
                 }}
               >
                 {/* Number */}
@@ -197,7 +201,7 @@ export default function ServicesSection() {
 
                 {/* Link */}
                 <a 
-                  href="#" 
+                  href="/services" 
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -209,11 +213,11 @@ export default function ServicesSection() {
                     fontFamily: "'Cairo', sans-serif"
                   }}
                 >
-                  اكتشف المزيد
-                  <FaArrowLeft size={12} />
+                  {language === 'ar' ? 'اكتشف المزيد' : 'Discover More'}
+                  <FaArrowLeft size={12} style={{ transform: language === 'ar' ? 'none' : 'rotate(180deg)' }} />
                 </a>
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

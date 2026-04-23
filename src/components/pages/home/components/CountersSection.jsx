@@ -21,7 +21,7 @@ export default function CountersSection() {
     <section
       id="counters"
       style={{ 
-        padding: "100px 0",
+        padding: "60px 0",
         backgroundColor: "var(--bg-primary)",
         position: "relative",
         overflow: "hidden"
@@ -45,12 +45,10 @@ export default function CountersSection() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="800"
         >
           <h2 style={{
             fontSize: "clamp(32px, 5vw, 48px)",
@@ -65,24 +63,23 @@ export default function CountersSection() {
               <><span style={{ color: "#ff9800" }}>Quik</span> in Numbers</>
             )}
           </h2>
-        </motion.div>
+        </div>
 
         {/* Stats Grid */}
         <div className="row justify-content-center">
           {stats.map((stat, index) => (
-            <motion.div
+            <div
               key={index}
               className="col-md-4 mb-4 mb-md-0"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
+              data-aos="zoom-in"
+              data-aos-delay={index * 150}
+              data-aos-duration="600"
             >
               <motion.div
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
                 style={{
                   textAlign: "center",
-                  padding: "40px 30px",
+                  padding: "30px 20px",
                   background: "linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
                   borderRadius: "25px",
                   border: "1px solid rgba(255,152,0,0.2)",
@@ -90,19 +87,6 @@ export default function CountersSection() {
                   overflow: "hidden"
                 }}
               >
-                {/* Glow Effect */}
-                <div style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: "200px",
-                  height: "200px",
-                  background: "radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)",
-                  filter: "blur(40px)",
-                  zIndex: 0
-                }} />
-
                 {/* Icon */}
                 <div style={{
                   width: "80px",
@@ -127,12 +111,11 @@ export default function CountersSection() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 + index * 0.1, duration: 0.5, type: "spring" }}
                   style={{
-                    fontSize: "52px",
+                    fontSize: "42px",
                     fontWeight: 800,
                     color: "#ff9800",
                     marginBottom: "10px",
                     fontFamily: "'Cairo', sans-serif",
-                    textShadow: "0 0 30px rgba(255,152,0,0.3)",
                     position: "relative",
                     zIndex: 1
                   }}
@@ -152,7 +135,7 @@ export default function CountersSection() {
                   {stat.label}
                 </p>
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

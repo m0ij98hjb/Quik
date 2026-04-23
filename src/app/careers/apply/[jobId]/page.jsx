@@ -10,12 +10,12 @@ import {
 } from 'react-icons/fa';
 
 const jobData = {
-  '01': { title: 'محاسب', titleEn: 'Accountant', department: 'المالية', departmentEn: 'Finance', location: 'أبها', locationEn: 'Abha', type: 'دوام كامل', typeEn: 'Full Time' },
+  '01': { title: 'مهندس IT', titleEn: 'IT Engineer', department: 'تقنية المعلومات', departmentEn: 'Information Technology', location: 'أبها', locationEn: 'Abha', type: 'دوام كامل', typeEn: 'Full Time' },
   '02': { title: 'مشرف محطة', titleEn: 'Station Supervisor', department: 'العمليات', departmentEn: 'Operations', location: 'خميس مشيط', locationEn: 'Khamis Mushait', type: 'دوام كامل', typeEn: 'Full Time' },
   '03': { title: 'موظف خدمة عملاء', titleEn: 'Customer Service', department: 'الخدمات', departmentEn: 'Services', location: 'جيزان', locationEn: 'Jazan', type: 'دوام كامل', typeEn: 'Full Time' },
   '04': { title: 'فني صيانة', titleEn: 'Maintenance Technician', department: 'الصيانة', departmentEn: 'Maintenance', location: 'أبها', locationEn: 'Abha', type: 'دوام كامل', typeEn: 'Full Time' },
   '05': { title: 'مسؤول موارد بشرية', titleEn: 'HR Officer', department: 'الموارد البشرية', departmentEn: 'Human Resources', location: 'أبها', locationEn: 'Abha', type: 'دوام كامل', typeEn: 'Full Time' },
-  '06': { title: 'مشرف مخزن', titleEn: 'Warehouse Supervisor', department: 'المشتريات', departmentEn: 'Procurement', location: 'خميس مشيط', locationEn: 'Khamis Mushait', type: 'دوام كامل', typeEn: 'Full Time' },
+  '06': { title: 'محاسب', titleEn: 'Accountant', department: 'المالية', departmentEn: 'Finance', location: 'أبها', locationEn: 'Abha', type: 'دوام كامل', typeEn: 'Full Time' },
 };
 
 export default function JobApplicationPage() {
@@ -111,7 +111,7 @@ export default function JobApplicationPage() {
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 25px',
-              boxShadow: '0 15px 40px rgba(255,152,0,0.3)'
+              boxShadow: 'none'
             }}>
               <FaBriefcase style={{ fontSize: '40px', color: 'var(--text-primary)' }} />
             </div>
@@ -440,7 +440,7 @@ export default function JobApplicationPage() {
                     cursor: 'pointer',
                     fontSize: '18px',
                     fontWeight: 700,
-                    boxShadow: '0 10px 30px rgba(255,152,0,0.4)',
+                    boxShadow: 'none',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

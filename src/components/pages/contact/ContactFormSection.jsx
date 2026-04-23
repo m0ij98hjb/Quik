@@ -35,7 +35,7 @@ const getContactCards = (t) => [
   },
   {
     icon: FaWhatsapp,
-    title: "WhatsApp",
+    title: t('contact.info.whatsapp') || "WhatsApp",
     content: ["+966 509 260 777"],
     link: "https://wa.me/966509260777",
     color: "#ff9800"
@@ -73,17 +73,7 @@ export default function ContactFormSection() {
         zIndex: 0
       }} />
 
-      {/* Glow Orbs */}
-      <div style={{
-        position: "absolute",
-        top: "10%",
-        right: "5%",
-        width: "300px",
-        height: "300px",
-        background: "radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)",
-        filter: "blur(60px)",
-        zIndex: 0
-      }} />
+      {/* Background Grid */}
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
@@ -154,18 +144,6 @@ export default function ContactFormSection() {
                   overflow: "hidden"
                 }}
               >
-                {/* Glow Effect */}
-                <div style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: "150px",
-                  height: "150px",
-                  background: `radial-gradient(circle, ${card.color}15 0%, transparent 70%)`,
-                  filter: "blur(30px)",
-                  zIndex: 0
-                }} />
 
                 {/* Icon */}
                 <motion.div
@@ -181,7 +159,7 @@ export default function ContactFormSection() {
                     margin: "0 auto 20px",
                     position: "relative",
                     zIndex: 1,
-                    boxShadow: `0 10px 30px ${card.color}40`
+                    boxShadow: "none"
                   }}
                 >
                   <card.icon style={{ fontSize: "28px", color: "#fff" }} />
@@ -433,10 +411,10 @@ export default function ContactFormSection() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "10px",
-                    boxShadow: "0 10px 30px rgba(255,152,0,0.4)"
+                    boxShadow: "none"
                   }}
                 >
-                  {t('contact.send')}
+                  {t('contact.form.send')}
                   <FaArrowLeft style={{ transform: language === 'ar' ? 'none' : 'rotate(180deg)' }} />
                 </motion.button>
               </div>

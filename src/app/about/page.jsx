@@ -55,14 +55,15 @@ export default function AboutPage() {
         
         typedInstanceRef.current = new window.Typed(typedRef.current, {
           strings: language === 'ar'
-            ? [t('about.hero.typed1'), t('about.hero.typed2')]
-            : ['About Quik', 'Our Vision & Mission'],
+            ? ['عن <span style="color:#ff9800">كويك</span>', t('about.hero.typed2')]
+            : ['About <span style="color:#ff9800">Quik</span>', 'Our Vision &amp; Mission'],
           typeSpeed: 80,
           backSpeed: 40,
           showCursor: true,
           cursorChar: '|',
           loop: true,
           startDelay: 300,
+          html: true,
         });
       }
     };
@@ -85,23 +86,7 @@ export default function AboutPage() {
           position: 'relative',
           overflow: 'hidden'
         }}>
-          {/* Glow Orbs */}
-          <div style={{
-            position: 'absolute',
-            top: '10%', right: '10%',
-            width: '300px', height: '300px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.15) 0%, transparent 70%)',
-            filter: 'blur(60px)',
-            zIndex: 0
-          }} />
-          <div style={{
-            position: 'absolute',
-            bottom: '10%', left: '10%',
-            width: '250px', height: '250px',
-            background: 'radial-gradient(circle, rgba(255,152,0,0.1) 0%, transparent 70%)',
-            filter: 'blur(50px)',
-            zIndex: 0
-          }} />
+          <div style={{ display: 'none' }} />
 
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <motion.div 
@@ -247,7 +232,8 @@ export default function AboutPage() {
               <div style={{
                 position: 'absolute',
                 top: '15px',
-                left: '15px',
+                left: language === 'ar' ? '15px' : 'auto',
+                right: language === 'ar' ? 'auto' : '15px',
                 fontSize: '48px',
                 fontWeight: 800,
                 color: 'rgba(255,152,0,0.1)',
@@ -289,7 +275,7 @@ export default function AboutPage() {
                     fontSize: '16px',
                     fontWeight: 700,
                     fontFamily: "'Cairo', sans-serif",
-                    boxShadow: '0 10px 30px rgba(255,152,0,0.4)'
+                    boxShadow: 'none'
                   }}
                 >
                   {language === 'ar' ? 'تنزيل بروفايل الشركة' : 'Download Company Profile'}
@@ -367,7 +353,8 @@ export default function AboutPage() {
                   <div style={{
                     position: 'absolute',
                     top: '15px',
-                    left: '15px',
+                    left: language === 'ar' ? '15px' : 'auto',
+                    right: language === 'ar' ? 'auto' : '15px',
                     fontSize: '48px',
                     fontWeight: 800,
                     color: 'rgba(255,152,0,0.1)',
@@ -388,7 +375,7 @@ export default function AboutPage() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       marginBottom: '20px',
-                      boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                      boxShadow: 'none'
                     }}
                   >
                     <FaEye style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -438,7 +425,8 @@ export default function AboutPage() {
                   <div style={{
                     position: 'absolute',
                     top: '15px',
-                    left: '15px',
+                    left: language === 'ar' ? '15px' : 'auto',
+                    right: language === 'ar' ? 'auto' : '15px',
                     fontSize: '48px',
                     fontWeight: 800,
                     color: 'rgba(255,152,0,0.1)',
@@ -459,7 +447,7 @@ export default function AboutPage() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       marginBottom: '20px',
-                      boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                      boxShadow: 'none'
                     }}
                   >
                     <FaBullseye style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -563,7 +551,8 @@ export default function AboutPage() {
                     <div style={{
                       position: 'absolute',
                       top: '15px',
-                      left: '15px',
+                      left: language === 'ar' ? '15px' : 'auto',
+                      right: language === 'ar' ? 'auto' : '15px',
                       fontSize: '48px',
                       fontWeight: 800,
                       color: 'rgba(255,152,0,0.1)',
@@ -585,7 +574,7 @@ export default function AboutPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         margin: '0 auto 20px',
-                        boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       <FaBullseye style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -611,18 +600,7 @@ export default function AboutPage() {
                       {goal.description}
                     </p>
 
-                    {/* Hover Glow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at 50% 100%, rgba(255,152,0,0.1) 0%, transparent 50%)',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                      pointerEvents: 'none'
-                    }} className="goal-card-glow" />
+                    {/* Hover Glow - Removed */}
                   </motion.div>
                 </motion.div>
               ))}
@@ -690,7 +668,8 @@ export default function AboutPage() {
                     <div style={{
                       position: 'absolute',
                       top: '15px',
-                      left: '15px',
+                      left: language === 'ar' ? '15px' : 'auto',
+                      right: language === 'ar' ? 'auto' : '15px',
                       fontSize: '48px',
                       fontWeight: 800,
                       color: 'rgba(255,152,0,0.1)',
@@ -712,7 +691,7 @@ export default function AboutPage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         marginBottom: '20px',
-                        boxShadow: '0 10px 30px rgba(255,152,0,0.3)'
+                        boxShadow: 'none'
                       }}
                     >
                       <value.icon style={{ fontSize: '28px', color: 'var(--text-primary)' }} />
@@ -754,18 +733,7 @@ export default function AboutPage() {
                       {language === 'ar' ? 'المزيد' : 'More'}
                     </a>
 
-                    {/* Hover Glow */}
-                    <div style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at 50% 100%, rgba(255,152,0,0.1) 0%, transparent 50%)',
-                      opacity: 0,
-                      transition: 'opacity 0.3s ease',
-                      pointerEvents: 'none'
-                    }} className="value-card-glow" />
+                    {/* Hover Glow - Removed */}
                   </motion.div>
                 </motion.div>
               ))}

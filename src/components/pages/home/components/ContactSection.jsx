@@ -247,7 +247,7 @@ export default function ContactSection() {
                         display: "inline-flex",
                         alignItems: "center",
                         gap: "10px",
-                        boxShadow: "0 10px 30px rgba(255,152,0,0.3)"
+                        boxShadow: "none"
                       }}
                     >
                       إرسال الرسالة

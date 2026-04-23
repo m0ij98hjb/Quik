@@ -150,14 +150,7 @@ export default function FranchiseServices() {
                     overflow: "hidden"
                   }}
                 >
-                  {/* Hover Glow Effect */}
-                  <div style={{
-                    position: "absolute",
-                    top: 0, left: 0, right: 0, bottom: 0,
-                    background: "radial-gradient(circle at center, rgba(255,152,0,0.1) 0%, transparent 70%)",
-                    opacity: 0,
-                    transition: "opacity 0.3s"
-                  }} className="hover-glow" />
+                  {/* Hover Glow Effect - Removed */}
                   
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
@@ -405,7 +398,7 @@ export default function FranchiseServices() {
                       justifyContent: "center",
                       margin: "0 auto 25px",
                       border: index === 0 ? "2px solid #ff9800" : "2px solid rgba(255,152,0,0.3)",
-                      boxShadow: index === 0 ? "0 0 30px rgba(255,152,0,0.4)" : "none"
+                      boxShadow: "none"
                     }}
                   >
                     <span style={{
@@ -458,24 +451,7 @@ export default function FranchiseServices() {
         position: "relative",
         overflow: "hidden"
       }}>
-        {/* Animated Background Glow */}
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 6, repeat: Infinity }}
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "600px",
-            height: "600px",
-            background: "radial-gradient(circle, rgba(255,152,0,0.3) 0%, transparent 70%)",
-            filter: "blur(80px)"
-          }}
-        />
+        <div style={{ display: 'none' }} />
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.div
@@ -505,21 +481,21 @@ export default function FranchiseServices() {
             </p>
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255,152,0,0.5)" }}
+              whileHover={{ scale: 1.05, boxShadow: "none" }}
               whileTap={{ scale: 0.95 }}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "12px",
-                padding: "20px 50px",
+                padding: "14px 40px",
                 background: "linear-gradient(135deg, #ff9800 0%, #e67e22 100%)",
                 color: "var(--text-primary)",
                 borderRadius: "50px",
                 textDecoration: "none",
-                fontSize: "18px",
+                fontSize: "16px",
                 fontWeight: 700,
                 fontFamily: "'Cairo', sans-serif",
-                boxShadow: "0 10px 30px rgba(255,152,0,0.4)",
+                boxShadow: "none",
                 border: "2px solid var(--border-color)"
               }}
             >

@@ -43,7 +43,7 @@ export default function PartnersSection() {
     <section 
       id="partners"
       style={{ 
-        padding: "120px 0",
+        padding: "120px 0 60px 0",
         backgroundColor: "var(--bg-primary)",
         position: "relative",
         overflow: "hidden"
@@ -61,12 +61,10 @@ export default function PartnersSection() {
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="800"
         >
           <span style={{
             display: "inline-flex",
@@ -145,15 +143,14 @@ export default function PartnersSection() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Filter Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-5"
+          data-aos="fade-up"
+          data-aos-duration="600"
+          data-aos-delay="100"
         >
           <div style={{
             display: "flex",
@@ -191,18 +188,17 @@ export default function PartnersSection() {
               </motion.button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Partners Grid */}
         <div className="row">
           {filteredPartners.map((partner, index) => (
-            <motion.div
+            <div
               key={index}
               className="col-lg-3 col-md-4 col-6 mb-4"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
+              data-aos="zoom-in"
+              data-aos-delay={index * 50}
+              data-aos-duration="500"
             >
               <motion.div
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
@@ -272,7 +268,7 @@ export default function PartnersSection() {
                   {language === 'ar' ? partner.category : partner.categoryEn}
                 </p>
               </motion.div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
