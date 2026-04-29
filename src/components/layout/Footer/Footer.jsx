@@ -107,6 +107,7 @@ export default function Footer() {
                       { name: t('nav.home'), href: "/" },
                       { name: t('nav.about'), href: "/about" },
                       { name: t('nav.services'), href: "/services" },
+                      { name: t('nav.quikApp'), href: "/quik-app" },
                       { name: t('nav.branches'), href: "/branches" },
                       { name: t('nav.contact'), href: "/contact" },
                     ].map((link, index) => (

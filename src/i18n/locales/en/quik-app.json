@@ -1,0 +1,54 @@
+{
+  "hero": {
+    "badge": "New Quik App",
+    "titleHighlight": "Your Wallet",
+    "titleMain": "In Your Pocket",
+    "description": "Enjoy a unique experience with the Quik app. Find the nearest station, pay with ease, and collect points with every refill.",
+    "downloadApp": "Download App Now",
+    "availableOn": "Available on Android and iPhone"
+  },
+  "features": {
+    "titleMain": "Why Use",
+    "titleHighlight": "Quik App?",
+    "subtitle": "Smart features that make your life easier",
+    "loyalty": {
+      "title": "Loyalty Program",
+      "description": "Collect points with every purchase and redeem them for rewards and free services."
+    },
+    "payment": {
+      "title": "Easy & Secure Payment",
+      "description": "Pay for your fuel and purchases from within the app quickly and securely."
+    },
+    "locator": {
+      "title": "Station Locator",
+      "description": "Find the nearest Quik station and discover the services available at each branch."
+    },
+    "offers": {
+      "title": "Exclusive Offers",
+      "description": "Get instant notifications of the latest offers and discounts tailored for app users."
+    }
+  },
+  "howItWorks": {
+    "titleMain": "How to start",
+    "titleHighlight": "with Quik?",
+    "subtitle": "3 simple steps for a smarter journey",
+    "step1": {
+      "title": "Download App",
+      "description": "Available now on app stores for free on all devices."
+    },
+    "step2": {
+      "title": "Create Account",
+      "description": "Register your details in seconds and start building your digital wallet."
+    },
+    "step3": {
+      "title": "Go and Save",
+      "description": "Use the app for every refill to collect points and get rewards."
+    }
+  },
+  "cta": {
+    "title": "Ready to Go?",
+    "description": "Join thousands of users and start saving time and effort with the Quik app.",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  }
+}

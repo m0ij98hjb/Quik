@@ -11,6 +11,7 @@ import arBranches from './locales/ar/branches.json';
 import arContact from './locales/ar/contact.json';
 import arBlog from './locales/ar/blog.json';
 import arPartners from './locales/ar/partners.json';
+import arQuikApp from './locales/ar/quik-app.json';
 
 // English translations
 import enCommon from './locales/en/common.json';
@@ -23,6 +24,7 @@ import enBranches from './locales/en/branches.json';
 import enContact from './locales/en/contact.json';
 import enBlog from './locales/en/blog.json';
 import enPartners from './locales/en/partners.json';
+import enQuikApp from './locales/en/quik-app.json';
 
 // Combine all translations by language
 export const translations = {
@@ -37,6 +39,7 @@ export const translations = {
     contact: arContact,
     blog: arBlog,
     partners: arPartners,
+    'quik-app': arQuikApp,
   },
   en: {
     common: enCommon,
@@ -49,6 +52,7 @@ export const translations = {
     contact: enContact,
     blog: enBlog,
     partners: enPartners,
+    'quik-app': enQuikApp,
   },
 };
 

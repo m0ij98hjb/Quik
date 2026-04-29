@@ -34,7 +34,7 @@ export default async function RootLayout({ children }) {
   const bodyClass = savedLang === 'ar' ? 'rtl-mode' : 'ltr-mode';
 
   return (
-    <html lang={savedLang} dir={dir} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang={savedLang} dir={dir} data-theme="light" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
       <head>
         {/* Favicon */}
         <link rel="icon" type="image/png" href="/images/quik-logo.png.png" sizes="192x192" />
@@ -64,6 +64,26 @@ export default async function RootLayout({ children }) {
         <link rel="stylesheet" href="https://quikstations.com/assets/frontend/css/skins/default-color.css" id="theme-color-toggle" />
         {/* Color Option Css */}
         <link rel="stylesheet" href="https://quikstations.com/assets/frontend/css/skins/yellow-color.css" />
+
+        {/* ── THEME INIT: runs before React, prevents flash ── */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  // Default is always light — only apply dark if explicitly saved
+                  var theme = (saved === 'dark') ? 'dark' : 'light';
+                  // Always reset to light if nothing saved yet
+                  if (!saved) { localStorage.setItem('theme', 'light'); }
+                  document.documentElement.setAttribute('data-theme', theme);
+                } catch(e) {
+                  document.documentElement.setAttribute('data-theme', 'light');
+                }
+              })();
+            `
+          }}
+        />
       </head>
 
       <body className={bodyClass} data-spy="scroll" data-target="#fixedNavbar">

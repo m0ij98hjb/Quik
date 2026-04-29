@@ -4,19 +4,24 @@ import { useEffect, useState } from "react";
 
 export function ThemeProvider({ children }) {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     setMounted(true);
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    // Always start with light mode — override any previously saved dark preference
+    const savedTheme = localStorage.getItem("theme");
+    const effectiveTheme = savedTheme ?? "light";
+    // If no preference saved yet, save light as default
+    if (!savedTheme) {
+      localStorage.setItem("theme", "light");
+    }
+    setTheme(effectiveTheme);
+    document.documentElement.setAttribute("data-theme", effectiveTheme);
 
     // Listen for storage changes (cross-tab sync)
     const handleStorageChange = (e) => {
       if (e.key === "theme") {
-        const newTheme = e.newValue || "dark";
+        const newTheme = e.newValue || "light";
         setTheme(newTheme);
         document.documentElement.setAttribute("data-theme", newTheme);
       }
@@ -29,8 +34,8 @@ export function ThemeProvider({ children }) {
     return (
       <div style={{ 
         minHeight: "100vh", 
-        backgroundColor: "#0a0a0a",
-        color: "#ffffff"
+        backgroundColor: "#ffffff",
+        color: "#1a1a1a"
       }}>
         {children}
       </div>
@@ -41,7 +46,7 @@ export function ThemeProvider({ children }) {
     <div style={{ 
       minHeight: "100vh", 
       backgroundColor: theme === "dark" ? "#0a0a0a" : "#ffffff",
-      color: theme === "dark" ? "#ffffff" : "#0a0a0a"
+      color: theme === "dark" ? "#ffffff" : "#1a1a1a"
     }}>
       {children}
     </div>

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { 
   FaAngleDown, FaBars, FaTimes, FaHome, FaInfoCircle, 
   FaCogs, FaHandshake, FaStore, FaNewspaper, FaMapMarkerAlt, 
-  FaBriefcase, FaPhoneAlt 
+  FaBriefcase, FaPhoneAlt, FaMobileAlt 
 } from "react-icons/fa";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import { useLanguage } from "../../../contexts/LanguageContext";
@@ -62,15 +62,15 @@ const QuikNavbar = () => {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 9999;
-          background: var(--bg-glass, rgba(10, 10, 10, 0.8));
+          background: var(--nav-bg, rgba(255, 255, 255, 0.85));
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          border-bottom: 1px solid var(--border-color, rgba(255, 152, 0, 0.1));
+          border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.05));
         }
         .quik-navbar.scrolled {
-          background: var(--bg-glass, rgba(10, 10, 10, 0.95));
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+          background: var(--nav-bg, #ffffff);
+          box-shadow: var(--shadow-md, 0 4px 30px rgba(0, 0, 0, 0.05));
         }
 
         .quik-navbar-inner {
@@ -78,6 +78,7 @@ const QuikNavbar = () => {
           grid-template-columns: 1fr auto 1fr;
           align-items: center;
           padding: 12px 40px;
+          padding-inline-end: 20px; /* Bring actions closer to the left edge */
           max-width: 1600px;
           margin: 0 auto;
           /* Removed uniform column-gap to allow asymmetric spacing */
@@ -87,8 +88,9 @@ const QuikNavbar = () => {
         .desktop-actions {
           display: flex;
           align-items: center;
-          gap: 25px; /* More balanced internal gap */
+          gap: 15px; /* More compact gap */
           justify-self: end;
+          margin-inline-end: -10px; /* Slight shift to the left in RTL */
         }
 
         /* ── LOGO ── */
@@ -124,7 +126,7 @@ const QuikNavbar = () => {
         .quik-nav-link {
           display: flex; align-items: center; gap: 6px;
           padding: 12px 20px;
-          font-size: 15px; font-weight: 600; color: var(--text-primary, rgba(255, 255, 255, 0.9));
+          font-size: 15px; font-weight: 600; color: var(--text-primary, #1a1a1a);
           text-decoration: none; white-space: nowrap; cursor: pointer;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           border: none; background: none;
@@ -176,14 +178,14 @@ const QuikNavbar = () => {
         /* ── DROPDOWN ── */
         .quik-dropdown {
           position: absolute; top: calc(100% + 10px); right: 0;
-          background: rgba(20, 20, 20, 0.95);
+          background: var(--bg-card, #ffffff);
           backdrop-filter: blur(20px);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+          box-shadow: var(--shadow-lg, 0 20px 60px rgba(0, 0, 0, 0.1));
           border-radius: 16px;
           min-width: 220px;
           padding: 12px 0;
           list-style: none; z-index: 9999;
-          border: 1px solid rgba(255, 152, 0, 0.2);
+          border: 1px solid rgba(0, 0, 0, 0.05);
           visibility: hidden; opacity: 0;
           transform: translateY(-10px);
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -196,7 +198,7 @@ const QuikNavbar = () => {
         
         .quik-dropdown li a {
           display: block; padding: 12px 24px;
-          font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.8);
+          font-size: 14px; font-weight: 500; color: var(--text-secondary, #333333);
           text-decoration: none; transition: all 0.2s ease;
         }
         .quik-dropdown li a:hover { 
@@ -210,11 +212,11 @@ const QuikNavbar = () => {
         .quik-lang-btn {
           display: flex; align-items: center; gap: 8px;
           padding: 10px 20px;
-          background: rgba(255, 152, 0, 0.1);
-          border: 1px solid rgba(255, 152, 0, 0.3);
+          background: rgba(255, 152, 0, 0.05);
+          border: 1px solid var(--border-color, rgba(255, 152, 0, 0.2));
           border-radius: 50px;
           font-family: 'Cairo', sans-serif;
-          font-size: 14px; font-weight: 600; color: var(--text-primary, rgba(255, 255, 255, 0.9));
+          font-size: 14px; font-weight: 600; color: var(--text-primary, #1a1a1a);
           cursor: pointer; transition: all 0.3s ease;
         }
         .quik-lang-btn:hover {
@@ -226,14 +228,14 @@ const QuikNavbar = () => {
         
         .quik-lang-dropdown {
           position: absolute; top: calc(100% + 10px); left: 0;
-          background: var(--bg-glass, rgba(20, 20, 20, 0.95));
+          background: var(--bg-card, #ffffff);
           backdrop-filter: blur(20px);
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+          box-shadow: var(--shadow-lg, 0 20px 60px rgba(0, 0, 0, 0.1));
           border-radius: 12px;
           min-width: 140px;
           padding: 8px 0;
           list-style: none; z-index: 9999;
-          border: 1px solid var(--border-color, rgba(255, 152, 0, 0.2));
+          border: 1px solid rgba(0, 0, 0, 0.05);
           visibility: hidden; opacity: 0;
           transform: translateY(-10px);
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -246,7 +248,7 @@ const QuikNavbar = () => {
         }
         .quik-lang-dropdown li button {
           display: block; width: 100%; padding: 10px 20px;
-          font-size: 14px; font-weight: 500; color: var(--text-primary, rgba(255, 255, 255, 0.8));
+          font-size: 14px; font-weight: 500; color: var(--text-secondary, #333333);
           background: none; border: none; text-align: right;
           font-family: 'Cairo', sans-serif; cursor: pointer;
           transition: all 0.2s ease;
@@ -263,10 +265,10 @@ const QuikNavbar = () => {
           justify-content: center;
           width: 50px;
           height: 50px;
-          background: rgba(255, 152, 0, 0.1);
-          border: 1px solid rgba(255, 152, 0, 0.3);
+          background: rgba(255, 152, 0, 0.05);
+          border: 1px solid var(--border-color, rgba(255, 152, 0, 0.2));
           border-radius: 12px;
-          color: var(--text-primary, #fff);
+          color: var(--text-primary, #1a1a1a);
           cursor: pointer;
           transition: all 0.3s ease;
           font-size: 20px;
@@ -284,16 +286,16 @@ const QuikNavbar = () => {
           top: 0; right: -100%;
           width: 320px;
           height: 100vh;
-          background: var(--bg-primary, rgba(10, 10, 10, 0.98));
+          background: var(--bg-primary, #ffffff);
           backdrop-filter: blur(20px);
           padding: 100px 0 30px;
           flex-direction: column;
-          box-shadow: -10px 0 60px rgba(0, 0, 0, 0.5);
+          box-shadow: var(--shadow-lg, -10px 0 60px rgba(0, 0, 0, 0.1));
           transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           z-index: 9998;
           padding-top: 100px;
           overflow-y: auto;
-          border-left: 1px solid var(--border-color, rgba(255, 152, 0, 0.2));
+          border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.05));
         }
         .quik-mobile-close {
           position: absolute;
@@ -304,10 +306,10 @@ const QuikNavbar = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(255, 152, 0, 0.1);
-          border: 1px solid rgba(255, 152, 0, 0.3);
+          background: rgba(255, 152, 0, 0.05);
+          border: 1px solid var(--border-color, rgba(255, 152, 0, 0.2));
           border-radius: 50%;
-          color: var(--text-primary, #fff);
+          color: var(--text-primary, #1a1a1a);
           cursor: pointer;
           font-size: 20px;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -343,7 +345,7 @@ const QuikNavbar = () => {
           align-items: center;
           gap: 12px;
           padding: 16px 30px;
-          font-size: 16px; font-weight: 600; color: var(--text-primary, rgba(255, 255, 255, 0.9));
+          font-size: 16px; font-weight: 600; color: var(--text-primary, #1a1a1a);
           text-decoration: none; font-family: 'Cairo', sans-serif;
           border: none; background: none;
           width: 100%; cursor: pointer;
@@ -517,6 +519,48 @@ const QuikNavbar = () => {
                 </ul>
               </div>
 
+              {/* Quik App Button */}
+              <a
+                href="/quik-app"
+                className={`quik-app-btn ${pathname === '/quik-app' ? 'active' : ''}`}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 24px',
+                  background: pathname === '/quik-app' ? 'rgba(255, 152, 0, 0.25)' : 'rgba(255, 152, 0, 0.1)',
+                  border: pathname === '/quik-app' ? '1px solid rgba(255, 152, 0, 0.6)' : '1px solid rgba(255, 152, 0, 0.3)',
+                  borderRadius: '50px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  color: pathname === '/quik-app' ? '#ff9800' : 'var(--text-primary, rgba(255, 255, 255, 0.9))',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 152, 0, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 152, 0, 0.5)';
+                  e.currentTarget.style.color = '#ff9800';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                }}
+                onMouseLeave={(e) => {
+                  if (pathname !== '/quik-app') {
+                    e.currentTarget.style.background = 'rgba(255, 152, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 152, 0, 0.3)';
+                    e.currentTarget.style.color = 'var(--text-primary, rgba(255, 255, 255, 0.9))';
+                  } else {
+                    e.currentTarget.style.background = 'rgba(255, 152, 0, 0.25)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 152, 0, 0.6)';
+                    e.currentTarget.style.color = '#ff9800';
+                  }
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
+              >
+                <FaMobileAlt />
+                {t('nav.quikApp')}
+              </a>
+
               {/* Careers Button - Styled like Language */}
               <a
                 href="/careers"
@@ -525,7 +569,7 @@ const QuikNavbar = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '10px 20px',
+                  padding: '10px 24px',
                   background: pathname === '/careers' ? 'rgba(255, 152, 0, 0.25)' : 'rgba(255, 152, 0, 0.1)',
                   border: pathname === '/careers' ? '1px solid rgba(255, 152, 0, 0.6)' : '1px solid rgba(255, 152, 0, 0.3)',
                   borderRadius: '50px',
@@ -534,26 +578,25 @@ const QuikNavbar = () => {
                   color: pathname === '/careers' ? '#ff9800' : 'var(--text-primary, rgba(255, 255, 255, 0.9))',
                   textDecoration: 'none',
                   transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap',
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.background = 'rgba(255, 152, 0, 0.2)';
-                  e.target.style.borderColor = 'rgba(255, 152, 0, 0.5)';
-                  e.target.style.color = '#ff9800';
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = 'none';
+                  e.currentTarget.style.background = 'rgba(255, 152, 0, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 152, 0, 0.5)';
+                  e.currentTarget.style.color = '#ff9800';
+                  e.currentTarget.style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={(e) => {
                   if (pathname !== '/careers') {
-                    e.target.style.background = 'rgba(255, 152, 0, 0.1)';
-                    e.target.style.borderColor = 'rgba(255, 152, 0, 0.3)';
-                    e.target.style.color = 'var(--text-primary, rgba(255, 255, 255, 0.9))';
+                    e.currentTarget.style.background = 'rgba(255, 152, 0, 0.1)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 152, 0, 0.3)';
+                    e.currentTarget.style.color = 'var(--text-primary, rgba(255, 255, 255, 0.9))';
                   } else {
-                    e.target.style.background = 'rgba(255, 152, 0, 0.25)';
-                    e.target.style.borderColor = 'rgba(255, 152, 0, 0.6)';
-                    e.target.style.color = '#ff9800';
+                    e.currentTarget.style.background = 'rgba(255, 152, 0, 0.25)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 152, 0, 0.6)';
+                    e.currentTarget.style.color = '#ff9800';
                   }
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = 'none';
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
                 {t('nav.careers')}
@@ -650,6 +693,20 @@ const QuikNavbar = () => {
           >
             🌐 {language === 'ar' ? 'English' : 'العربية'}
           </button>
+          <a
+            href="/quik-app"
+            className={`quik-mobile-link ${pathname === '/quik-app' ? 'active' : ''}`}
+            style={{
+              background: pathname === '/quik-app' ? 'rgba(255, 152, 0, 0.15)' : 'transparent',
+              color: pathname === '/quik-app' ? '#ff9800' : undefined,
+              border: pathname === '/quik-app' ? '1px solid rgba(255, 152, 0, 0.4)' : '1px solid rgba(255, 152, 0, 0.2)',
+              borderRadius: '12px',
+              margin: '5px 20px'
+            }}
+          >
+            <FaMobileAlt size={18} />
+            {t('nav.quikApp')}
+          </a>
           <a
             href="/careers"
             className={`quik-mobile-link ${pathname === '/careers' ? 'active' : ''}`}
