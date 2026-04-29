@@ -398,6 +398,7 @@ const QuikNavbar = () => {
           .quik-nav-menu, 
           .quik-lang, 
           .quik-careers-btn, 
+          .quik-app-navbar-btn,
           .desktop-actions > a:last-child { 
             display: none !important; 
           }
@@ -522,7 +523,7 @@ const QuikNavbar = () => {
               {/* Quik App Button */}
               <a
                 href="/quik-app"
-                className={`quik-app-btn ${pathname === '/quik-app' ? 'active' : ''}`}
+                className={`quik-app-btn quik-app-navbar-btn ${pathname === '/quik-app' ? 'active' : ''}`}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',

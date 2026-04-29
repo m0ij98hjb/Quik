@@ -57,9 +57,38 @@ export default function QuikAppPage() {
 
   return (
     <main style={{ backgroundColor: 'var(--bg-primary)', minHeight: '100vh', overflow: 'hidden' }}>
+      <style>{`
+        .quik-app-hero { padding: 160px 0 120px; }
+        .hero-text-wrapper { text-align: ${language === 'ar' ? 'right' : 'left'}; }
+        .hero-btns-wrapper { justify-content: flex-start; }
+        .quik-app-feature-card { padding: 45px 30px; }
+        .quik-app-step-card { padding: 40px 25px; }
+        .quik-app-cta-card { padding: 70px 40px; }
+        
+        @media (max-width: 991.98px) {
+          .quik-app-hero { padding: 120px 0 60px; }
+          .hero-text-wrapper {
+            text-align: center !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .hero-btns-wrapper { justify-content: center; }
+          .quik-app-hero h1 {
+            font-size: clamp(30px, 8vw, 45px) !important;
+            white-space: normal !important;
+            line-height: 1.3 !important;
+          }
+        }
+        @media (max-width: 767.98px) {
+          .quik-app-hero { padding: 100px 0 40px; }
+          .quik-app-feature-card { padding: 30px 20px !important; }
+          .quik-app-step-card { padding: 30px 15px !important; }
+          .quik-app-cta-card { padding: 40px 20px !important; }
+        }
+      `}</style>
       {/* Hero Section - Ultra Professional Dark Theme */}
-      <section style={{
-        padding: '160px 0 120px',
+      <section className="quik-app-hero" style={{
         background: '#050505',
         position: 'relative',
         overflow: 'hidden',
@@ -144,13 +173,13 @@ export default function QuikAppPage() {
             {/* Content Side - Wider to fit title on one line */}
             <div className="col-lg-7 order-lg-1 order-2">
               <motion.div
+                className="hero-text-wrapper"
                 initial={{ opacity: 0, x: language === 'ar' ? 50 : -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
                 style={{
                   padding: '40px 0',
                   background: 'transparent',
-                  textAlign: language === 'ar' ? 'right' : 'left',
                   direction: language === 'ar' ? 'rtl' : 'ltr'
                 }}
               >
@@ -196,7 +225,7 @@ export default function QuikAppPage() {
                   {t('quik-app.hero.description')}
                 </p>
 
-                <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+                <div className="hero-btns-wrapper" style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                   {/* Apple App Store */}
                   <motion.a
                     href="#"
@@ -207,19 +236,26 @@ export default function QuikAppPage() {
                       alignItems: 'center',
                       gap: '12px',
                       padding: '12px 28px',
-                      background: '#1a1a1a',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      background: '#000000',
+                      border: '1px solid rgba(255,255,255,0.2)',
                       borderRadius: '16px',
                       color: '#ffffff',
                       textDecoration: 'none',
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.borderColor = '#ff9800'}
-                    onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#ffffff';
+                      e.currentTarget.style.boxShadow = '0 10px 20px rgba(255,255,255,0.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                      e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+                    }}
                   >
-                    <FaApple size={30} />
+                    <FaApple size={30} color="#ffffff" />
                     <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
-                      <div style={{ fontSize: '10px', opacity: 0.5 }}>Download on the</div>
+                      <div style={{ fontSize: '10px', opacity: 0.8 }}>Download on the</div>
                       <div style={{ fontSize: '18px', fontWeight: 700 }}>App Store</div>
                     </div>
                   </motion.a>
@@ -234,19 +270,34 @@ export default function QuikAppPage() {
                       alignItems: 'center',
                       gap: '12px',
                       padding: '12px 28px',
-                      background: '#1a1a1a',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      background: '#000000',
+                      border: '1px solid rgba(255,255,255,0.2)',
                       borderRadius: '16px',
                       color: '#ffffff',
                       textDecoration: 'none',
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 10px 20px rgba(0,0,0,0.3)'
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.borderColor = '#ff9800'}
-                    onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = '#34A853';
+                      e.currentTarget.style.boxShadow = '0 10px 20px rgba(52,168,83,0.15)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)';
+                      e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.3)';
+                    }}
                   >
-                    <FaGooglePlay size={26} />
+                    <svg width="0" height="0" style={{ position: 'absolute' }}>
+                      <linearGradient id="play-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#2196F3" />
+                        <stop offset="33%" stopColor="#4CAF50" />
+                        <stop offset="66%" stopColor="#FFEB3B" />
+                        <stop offset="100%" stopColor="#F44336" />
+                      </linearGradient>
+                    </svg>
+                    <FaGooglePlay size={26} style={{ fill: 'url(#play-gradient)' }} />
                     <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
-                      <div style={{ fontSize: '10px', opacity: 0.5 }}>GET IT ON</div>
+                      <div style={{ fontSize: '10px', opacity: 0.8 }}>GET IT ON</div>
                       <div style={{ fontSize: '18px', fontWeight: 700 }}>Google Play</div>
                     </div>
                   </motion.a>
@@ -350,10 +401,10 @@ export default function QuikAppPage() {
             {features.map((feature) => (
               <div key={feature.id} className="col-md-6 col-lg-3 mb-4">
                 <motion.div
+                  className="quik-app-feature-card"
                   variants={fadeInUp}
                   whileHover={{ y: -10, borderColor: '#ff9800', boxShadow: '0 25px 50px rgba(0,0,0,0.05)' }}
                   style={{
-                    padding: '45px 30px',
                     background: 'var(--bg-card)',
                     borderRadius: '28px',
                     border: '1px solid var(--border-color)',
@@ -453,10 +504,10 @@ export default function QuikAppPage() {
             {[1, 2, 3].map((step) => (
               <div key={step} className="col-lg-4 col-md-6 mb-4">
                 <motion.div
+                  className="quik-app-step-card"
                   variants={fadeInUp}
                   style={{
                     position: 'relative',
-                    padding: '40px 25px',
                     textAlign: 'center',
                     background: 'var(--bg-card)',
                     borderRadius: '24px',
@@ -540,12 +591,12 @@ export default function QuikAppPage() {
       <section style={{ padding: '100px 0', background: 'var(--bg-primary)' }}>
         <div className="container">
           <motion.div
+            className="quik-app-cta-card"
             initial={{ opacity: 0, scale: 0.95, y: 50 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
             style={{
-              padding: '70px 40px',
               background: 'linear-gradient(135deg, #ff9800 0%, #e67e22 100%)',
               borderRadius: '40px',
               textAlign: 'center',
